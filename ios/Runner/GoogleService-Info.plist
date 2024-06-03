@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAowVyu1LDd4w8zTuez3SQR7tkXsY8lVXs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>752574121763</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.circuitSuperintendentTool</string>
+	<key>PROJECT_ID</key>
+	<string>circuit-superintendent-tool</string>
+	<key>STORAGE_BUCKET</key>
+	<string>circuit-superintendent-tool.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:752574121763:ios:954a406c3be25a25472e96</string>
+</dict>
+</plist>
