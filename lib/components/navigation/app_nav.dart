@@ -1,7 +1,7 @@
-import 'package:circuit_superintendent_tool/core/app_colors.dart';
 import 'package:circuit_superintendent_tool/core/app_spacing.dart';
 import 'package:circuit_superintendent_tool/core/feature_toggles.dart';
 import 'package:circuit_superintendent_tool/core/inject.dart';
+import 'package:circuit_superintendent_tool/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -20,49 +20,56 @@ class _AppNavState extends State<AppNav> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Expanded(child: widget.child),
-          SizedBox(
-              height: AppSpacing.x64,
-              child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-                if (features.menuItemHome)
-                  _NavItem(
-                    label: 'Início',
-                    icon: Icons.home,
-                    route: '/',
-                    currentPath: currentPath,
-                  ),
-                if (features.menuItemVisits)
-                  _NavItem(
-                    label: 'Visitas',
-                    icon: Icons.calendar_month,
-                    route: '/visits',
-                    currentPath: currentPath,
-                  ),
-                if (features.menuItemCongregations)
-                  _NavItem(
-                    label: 'Congreg.',
-                    icon: Icons.location_city_rounded,
-                    route: '/congregations',
-                    currentPath: currentPath,
-                  ),
-                if (features.menuItemSettings)
-                  _NavItem(
-                    label: 'Config.',
-                    icon: Icons.tune,
-                    route: '/settings',
-                    currentPath: currentPath,
-                  )
-              ]))
-        ],
+      body: SafeArea(
+        top: false,
+        child: Column(
+          children: [
+            Expanded(child: widget.child),
+            Container(
+                decoration: BoxDecoration(boxShadow: [
+                  BoxShadow(blurRadius: 2, spreadRadius: 0.5, offset: const Offset(0, -2), color: AppColors.gray300),
+                  BoxShadow(blurRadius: 4, spreadRadius: 4, offset: const Offset(0, 2), color: AppColors.white),
+                ], color: AppColors.white),
+                height: AppSpacing.x64,
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+                  if (features.menuItemHome)
+                    _NavItem(
+                      label: 'Home',
+                      icon: Icons.home,
+                      route: '/',
+                      currentPath: currentPath,
+                    ),
+                  if (features.menuItemVisits)
+                    _NavItem(
+                      label: 'Visitas',
+                      icon: Icons.calendar_month,
+                      route: '/visits',
+                      currentPath: currentPath,
+                    ),
+                  if (features.menuItemCongregations)
+                    _NavItem(
+                      label: 'Congreg.',
+                      icon: Icons.location_city_rounded,
+                      route: '/congregations',
+                      currentPath: currentPath,
+                    ),
+                  if (features.menuItemSettings)
+                    _NavItem(
+                      label: 'Config.',
+                      icon: Icons.tune,
+                      route: '/settings',
+                      currentPath: currentPath,
+                    )
+                ]))
+          ],
+        ),
       ),
     );
   }
 }
 
 class _NavItem extends StatefulWidget {
-  const _NavItem({super.key, required this.label, required this.icon, required this.route, required this.currentPath});
+  const _NavItem({required this.label, required this.icon, required this.route, required this.currentPath});
   final String label;
   final String currentPath;
   final IconData icon;

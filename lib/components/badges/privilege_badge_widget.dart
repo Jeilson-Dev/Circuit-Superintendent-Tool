@@ -1,6 +1,6 @@
-import 'package:circuit_superintendent_tool/core/app_colors.dart';
 import 'package:circuit_superintendent_tool/core/app_spacing.dart';
-import 'package:circuit_superintendent_tool/core/app_text_theme.dart';
+import 'package:circuit_superintendent_tool/core/theme/app_colors.dart';
+import 'package:circuit_superintendent_tool/core/theme/app_text_theme.dart';
 import 'package:flutter/material.dart';
 
 class PrivilegeBadgeWidget extends StatelessWidget {
