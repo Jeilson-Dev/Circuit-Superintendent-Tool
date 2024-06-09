@@ -1,67 +1,91 @@
-import 'package:circuit_superintendent_tool/components/badges/privilege_badge_widget.dart';
-import 'package:circuit_superintendent_tool/core/app_colors.dart';
 import 'package:circuit_superintendent_tool/core/app_spacing.dart';
-import 'package:circuit_superintendent_tool/core/app_text_theme.dart';
+import 'package:circuit_superintendent_tool/core/localizations.dart';
+import 'package:circuit_superintendent_tool/core/theme/app_colors.dart';
+import 'package:circuit_superintendent_tool/core/theme/app_text_theme.dart';
+import 'package:circuit_superintendent_tool/dto/congregation_dto.dart';
 import 'package:flutter/material.dart';
 
-class CongregationCardWidget extends StatelessWidget {
-  final String congregationName;
-  final String congregationCity;
-  final String lastVisit;
-  final String nextVisit;
-  final int attendingMeetingsWeekends;
-  final int attendingMeetingsWeekDay;
-  final int elders;
-  final int servants;
-  final int pioneers;
+class CongregationCardWidget extends StatefulWidget {
+  final CongregationDTO congregation;
+  final void Function() onDelete;
+  final void Function() onEdit;
 
-  const CongregationCardWidget({
-    super.key,
-    required this.congregationName,
-    required this.congregationCity,
-    required this.lastVisit,
-    required this.nextVisit,
-    required this.attendingMeetingsWeekends,
-    required this.attendingMeetingsWeekDay,
-    required this.elders,
-    required this.servants,
-    required this.pioneers,
-  });
+  const CongregationCardWidget({super.key, required this.congregation, required this.onDelete, required this.onEdit});
+
+  @override
+  State<CongregationCardWidget> createState() => _CongregationCardWidgetState();
+}
+
+class _CongregationCardWidgetState extends State<CongregationCardWidget> {
+  bool displayDelete = false;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.x24, vertical: AppSpacing.x12),
-      child: Container(
-        decoration: BoxDecoration(
+      child: GestureDetector(
+        onTap: displayDelete ? null : widget.onEdit,
+        child: Container(
+          decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(AppSpacing.x12),
-            boxShadow: [BoxShadow(color: AppColors.gray400, blurRadius: AppSpacing.x4, spreadRadius: 0.5, offset: Offset(2, 2))]),
-        child: Padding(
-          padding: const EdgeInsets.all(AppSpacing.x16),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text('$congregationName - $congregationCity', style: AppTextTheme.titleLarge),
-            AppSpacing.spacingX4,
-            Text('Última visita: $lastVisit', style: AppTextTheme.bodySmall),
-            AppSpacing.spacingX4,
-            Text('Assistência às Reuniões:', style: AppTextTheme.labelLarge),
-            AppSpacing.spacingX4,
-            Text('Meio de semana - $attendingMeetingsWeekDay', style: AppTextTheme.bodySmall.copyWith(color: AppColors.gray600)),
-            AppSpacing.spacingX4,
-            Text('Final de semana - $attendingMeetingsWeekends', style: AppTextTheme.bodySmall.copyWith(color: AppColors.gray600)),
-            AppSpacing.spacingX12,
-            Row(
+            boxShadow: [
+              BoxShadow(color: AppColors.gray400, blurRadius: AppSpacing.x4, spreadRadius: 0.5, offset: const Offset(2, 2)),
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(AppSpacing.x16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                PrivilegeBadgeWidget.elder(value: elders),
-                AppSpacing.spacingX12,
-                PrivilegeBadgeWidget.servant(value: servants),
-                AppSpacing.spacingX12,
-                PrivilegeBadgeWidget.pioneer(value: pioneers),
+                if (displayDelete)
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.75,
+                    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                      Center(
+                        child: Text(
+                          maxLines: 2,
+                          AppLocalizations.of(context)!.congregationCardConfirmDelete(widget.congregation.name),
+                          style: AppTextTheme.titleLarge,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      AppSpacing.spacingX4,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          TextButton(
+                            child: Text(
+                              AppLocalizations.of(context)!.congregationCardConfirmDeleteYes,
+                              style: AppTextTheme.bodyMedium.copyWith(color: AppColors.error400),
+                            ),
+                            onPressed: () => widget.onDelete(),
+                          ),
+                          TextButton(
+                            child: Text(
+                              AppLocalizations.of(context)!.congregationCardConfirmDeleteNo,
+                              style: AppTextTheme.bodyMedium.copyWith(color: AppColors.primary600),
+                            ),
+                            onPressed: () => setState(() => displayDelete = false),
+                          ),
+                        ],
+                      )
+                    ]),
+                  ),
+                if (!displayDelete)
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.60,
+                    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                      Text(widget.congregation.name, style: AppTextTheme.titleLarge, overflow: TextOverflow.ellipsis),
+                      AppSpacing.spacingX4,
+                      Text(widget.congregation.city, style: AppTextTheme.bodySmall, overflow: TextOverflow.ellipsis),
+                    ]),
+                  ),
+                if (!displayDelete) IconButton(onPressed: () => setState(() => displayDelete = true), icon: Icon(Icons.delete, color: AppColors.error300))
               ],
             ),
-            AppSpacing.spacingX12,
-            Text('Próxima visita: $nextVisit', style: AppTextTheme.bodySmall.copyWith(color: AppColors.gray500)),
-          ]),
+          ),
         ),
       ),
     );

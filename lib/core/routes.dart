@@ -4,66 +4,56 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRoute {
-  static get router => GoRouter(
+  static String get navBarHomeRoute => '/';
+  static String get navBarVisitsRoute => '/visits';
+  static String get navBarCongregationRoute => '/congregations';
+  static String get navBarSettingsRoute => '/settings';
+
+  static router(String initialRoute) => GoRouter(
         debugLogDiagnostics: true,
-        initialLocation: '/',
+        initialLocation: initialRoute,
         routes: <RouteBase>[
           ShellRoute(
-              pageBuilder: (context, state, child) =>
-                  _buildPageWithDefaultTransition<void>(context: context, state: state, child: AppNav(child: child, currentPath: state.fullPath)),
-              routes: [
-                GoRoute(
-                  path: '/',
-                  builder: (BuildContext context, GoRouterState state) => Container(),
-                  pageBuilder: (context, state) => _buildPageWithDefaultTransition<void>(
-                    state: state,
-                    context: context,
-                    child: Container(
-                      color: Colors.blueGrey,
-                      child: Builder(builder: (context) {
-                        return Container();
-                      }),
+            pageBuilder: (context, state, child) =>
+                _buildPageWithDefaultTransition<void>(context: context, state: state, child: AppNav(child: child, currentPath: state.fullPath)),
+            routes: [
+              GoRoute(
+                path: '/visits',
+                pageBuilder: (context, state) => _buildPageWithDefaultTransition<void>(
+                  state: state,
+                  context: context,
+                  child: Container(
+                    color: Colors.amber,
+                    child: const Center(child: Text('Visitas')),
+                  ),
+                ),
+                routes: [],
+              ),
+              GoRoute(
+                path: '/${CongregationPage.path}',
+                pageBuilder: (context, state) => _buildPageWithDefaultTransition<void>(
+                  state: state,
+                  context: context,
+                  child: const CongregationPage(),
+                ),
+                routes: [],
+              ),
+              GoRoute(
+                path: '/settings',
+                pageBuilder: (context, state) => _buildPageWithDefaultTransition<void>(
+                  context: context,
+                  state: state,
+                  child: Container(
+                    color: Colors.red,
+                    child: const Center(
+                      child: Text('Configurações'),
                     ),
                   ),
-                  routes: [
-                    GoRoute(
-                      path: 'visits',
-                      pageBuilder: (context, state) => _buildPageWithDefaultTransition<void>(
-                        state: state,
-                        context: context,
-                        child: Container(
-                          color: Colors.amber,
-                          child: const Center(child: Text('Visitas')),
-                        ),
-                      ),
-                      routes: [],
-                    ),
-                    GoRoute(
-                      path: 'congregations',
-                      pageBuilder: (context, state) => _buildPageWithDefaultTransition<void>(
-                        state: state,
-                        context: context,
-                        child: const CongregationPage(),
-                      ),
-                      routes: [],
-                    ),
-                    GoRoute(
-                      path: 'settings',
-                      pageBuilder: (context, state) => _buildPageWithDefaultTransition<void>(
-                        context: context,
-                        state: state,
-                        child: Container(
-                          color: Colors.red,
-                          child: const Center(
-                            child: Text('Configurações'),
-                          ),
-                        ),
-                      ),
-                      routes: [],
-                    ),
-                  ],
-                )
-              ]),
+                ),
+                routes: [],
+              ),
+            ],
+          )
         ],
       );
 }

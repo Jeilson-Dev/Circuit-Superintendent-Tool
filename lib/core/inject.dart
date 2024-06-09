@@ -1,7 +1,9 @@
 import 'package:circuit_superintendent_tool/core/feature_toggles.dart';
 import 'package:circuit_superintendent_tool/core/firebase_options.dart';
 import 'package:circuit_superintendent_tool/core/logger.dart';
+import 'package:circuit_superintendent_tool/features/congregations/congregations_cubit.dart';
 import 'package:circuit_superintendent_tool/services/force_update_service.dart';
+import 'package:circuit_superintendent_tool/services/sqflite_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flagsmith/flagsmith.dart';
@@ -84,7 +86,11 @@ setupInjection() async {
 
   GetIt.I.registerLazySingleton<PackageInfo>(() => packageInfo);
 
+  GetIt.I.registerLazySingleton<SQFliteService>(() => SQFliteService());
+
   GetIt.I.registerLazySingleton<FirebaseRemoteConfig>(() => FirebaseRemoteConfig.instance);
+
+  GetIt.I.registerLazySingleton<CongregationsCubit>(() => CongregationsCubit(inject<SQFliteService>()));
 
   GetIt.I.registerLazySingleton<ForceUpdateService>(() => ForceUpdateService(
         featureToggles: inject<FeatureToggles>(),

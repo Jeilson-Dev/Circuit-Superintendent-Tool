@@ -1,13 +1,13 @@
-import 'package:circuit_superintendent_tool/core/app_colors.dart';
 import 'package:circuit_superintendent_tool/core/app_spacing.dart';
-import 'package:circuit_superintendent_tool/core/app_text_theme.dart';
+import 'package:circuit_superintendent_tool/core/localizations.dart';
+import 'package:circuit_superintendent_tool/core/theme/app_colors.dart';
+import 'package:circuit_superintendent_tool/core/theme/app_text_theme.dart';
 import 'package:flutter/material.dart';
 
 class PrivilegeBadgeWidget extends StatelessWidget {
   final Color color;
   final String label;
-  final int value;
-  const PrivilegeBadgeWidget._({required this.color, required this.label, required this.value});
+  const PrivilegeBadgeWidget._({required this.color, required this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class PrivilegeBadgeWidget extends StatelessWidget {
       decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(AppSpacing.x4)),
       child: Center(
         child: Text(
-          '$label $value',
+          label,
           textAlign: TextAlign.center,
           style: AppTextTheme.bodySmall.copyWith(color: Colors.white),
         ),
@@ -25,19 +25,16 @@ class PrivilegeBadgeWidget extends StatelessWidget {
     );
   }
 
-  factory PrivilegeBadgeWidget.elder({required int value}) => PrivilegeBadgeWidget._(
+  factory PrivilegeBadgeWidget.elder(BuildContext context, {required int amount}) => PrivilegeBadgeWidget._(
         color: AppColors.elderBadge,
-        label: 'AC -',
-        value: value,
+        label: AppLocalizations.of(context)!.privilegeBadgeElderAbbreviation(amount),
       );
-  factory PrivilegeBadgeWidget.servant({required int value}) => PrivilegeBadgeWidget._(
+  factory PrivilegeBadgeWidget.servant(BuildContext context, {required int amount}) => PrivilegeBadgeWidget._(
         color: AppColors.servantBadge,
-        label: 'SM -',
-        value: value,
+        label: AppLocalizations.of(context)!.privilegeBadgeServantAbbreviation(amount),
       );
-  factory PrivilegeBadgeWidget.pioneer({required int value}) => PrivilegeBadgeWidget._(
+  factory PrivilegeBadgeWidget.pioneer(BuildContext context, {required int amount}) => PrivilegeBadgeWidget._(
         color: AppColors.pioneerBadge,
-        label: 'PR -',
-        value: value,
+        label: AppLocalizations.of(context)!.privilegeBadgePioneerAbbreviation(amount),
       );
 }
