@@ -1,4 +1,5 @@
 import 'package:circuit_superintendent_tool/core/app_spacing.dart';
+import 'package:circuit_superintendent_tool/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -15,7 +16,7 @@ class SplashScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: AppSpacing.x100, width: AppSpacing.x80, child: Lottie.asset('assets/lotties/loading.json')),
+              SizedBox(height: AppSpacing.x100, width: AppSpacing.x80, child: Lottie.asset(Assets.lotties.loading)),
             ],
           ),
         ),

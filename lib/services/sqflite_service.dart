@@ -25,10 +25,6 @@ class SQFliteService {
     return db;
   }
 
-  // _deleteTable(String table) {
-  //   if (_db != null) _db!.delete(table);
-  // }
-
   _onCreate(Database db, int version) async {
     await db.execute('''CREATE TABLE congregations (
       id INTEGER PRIMARY KEY,
@@ -63,48 +59,22 @@ class SQFliteService {
     await _db!.insert('congregations', {'id': null, 'name': name, 'city': city});
   }
 
+  Future<void> updateCongregation({required int id, required String name, required String city}) async {
+    if (name.isEmpty || city.isEmpty) throw 'You must provide completed fields';
+    await _db!.update('congregations', {'name': name, 'city': city}, where: 'id = ?', whereArgs: [id]);
+  }
+
   Future<void> deleteCongregation({required int id}) async {
     await _db!.delete('congregations', where: 'id == $id');
   }
 
   Future<List<CongregationDTO>> getCongregations() async {
-    final result = await _db!.query('congregations');
+    final database = await db;
+    final result = await database.query('congregations');
     return result.map((congregation) => CongregationDTO.fromJson(congregation)).toList();
   }
 
-  // Future<ObjectDeliveryDto> save(ObjectDeliveryDto object) async {
-  //   var dbClient = await db;
-  //   if (dbClient != null) object.id = await dbClient.insert(table, object.toJson());
-  //   return object;
-  // }
-
-  // Future<List<ObjectDeliveryDto>> getObjects() async {
-  //   List<ObjectDeliveryDto> objectsDelivery = [];
-  //   var dbClient = await db;
-  //   if (dbClient != null) {
-  //     List<Map> result = await dbClient.query(table, columns: [id, code, address, number]);
-
-  //     if (result.isNotEmpty) {
-  //       objectsDelivery = result.map((object) => ObjectDeliveryDto.fromJson(object as Map<String, dynamic>)).toList();
-  //     }
-  //   }
-  //   return objectsDelivery;
-  // }
-
-  Future<int> delete(int id) async {
-    var dbClient = await db;
-    // if (dbClient != null) return await dbClient.delete(table, where: '$id = ?', whereArgs: [id]);
-    return -1;
-  }
-
-  // Future<int> update(ObjectDeliveryDto employee) async {
-  //   var dbClient = await db;
-  //   if (dbClient != null) return await dbClient.update(table, employee.toJson(), where: '$id = ?', whereArgs: [employee.id]);
-  //   return -1;
-  // }
-
   Future close() async {
-    var dbClient = await db;
-    if (dbClient != null) dbClient.close();
+    await db.then((db) => db.close());
   }
 }

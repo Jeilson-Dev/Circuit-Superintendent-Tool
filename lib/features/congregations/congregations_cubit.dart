@@ -27,4 +27,14 @@ class CongregationsCubit extends Cubit<CongregationsState> {
     await service.createCongregation(name: name, city: city);
     loadCongregations();
   }
+
+  Future<void> updateCongregation({required int id, required String name, required String city}) async {
+    await service.updateCongregation(id: id, name: name, city: city);
+    loadCongregations();
+  }
+
+  Future<void> deleteCongregation({required int congregationId}) async {
+    await service.deleteCongregation(id: congregationId);
+    loadCongregations();
+  }
 }

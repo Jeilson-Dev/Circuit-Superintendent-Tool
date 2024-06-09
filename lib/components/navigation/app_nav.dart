@@ -1,6 +1,8 @@
 import 'package:circuit_superintendent_tool/core/app_spacing.dart';
 import 'package:circuit_superintendent_tool/core/feature_toggles.dart';
 import 'package:circuit_superintendent_tool/core/inject.dart';
+import 'package:circuit_superintendent_tool/core/localizations.dart';
+import 'package:circuit_superintendent_tool/core/routes.dart';
 import 'package:circuit_superintendent_tool/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -34,30 +36,30 @@ class _AppNavState extends State<AppNav> {
                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
                   if (features.menuItemHome)
                     _NavItem(
-                      label: 'Home',
+                      label: AppLocalizations.of(context)!.appNavigationBarHome,
                       icon: Icons.home,
-                      route: '/',
+                      route: AppRoute.navBarHomeRoute,
                       currentPath: currentPath,
                     ),
                   if (features.menuItemVisits)
                     _NavItem(
-                      label: 'Visitas',
+                      label: AppLocalizations.of(context)!.appNavigationBarVisits,
                       icon: Icons.calendar_month,
-                      route: '/visits',
+                      route: AppRoute.navBarVisitsRoute,
                       currentPath: currentPath,
                     ),
                   if (features.menuItemCongregations)
                     _NavItem(
-                      label: 'Congreg.',
+                      label: AppLocalizations.of(context)!.appNavigationBarCongregations,
                       icon: Icons.location_city_rounded,
-                      route: '/congregations',
+                      route: AppRoute.navBarCongregationRoute,
                       currentPath: currentPath,
                     ),
                   if (features.menuItemSettings)
                     _NavItem(
-                      label: 'Config.',
+                      label: AppLocalizations.of(context)!.appNavigationBarHomeSettings,
                       icon: Icons.tune,
-                      route: '/settings',
+                      route: AppRoute.navBarSettingsRoute,
                       currentPath: currentPath,
                     )
                 ]))

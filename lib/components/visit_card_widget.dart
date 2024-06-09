@@ -52,11 +52,11 @@ class VisitCardWidget extends StatelessWidget {
             AppSpacing.spacingX12,
             Row(
               children: [
-                PrivilegeBadgeWidget.elder(value: elders),
+                PrivilegeBadgeWidget.elder(context, amount: elders),
                 AppSpacing.spacingX12,
-                PrivilegeBadgeWidget.servant(value: servants),
+                PrivilegeBadgeWidget.servant(context, amount: servants),
                 AppSpacing.spacingX12,
-                PrivilegeBadgeWidget.pioneer(value: pioneers),
+                PrivilegeBadgeWidget.pioneer(context, amount: pioneers),
               ],
             ),
             AppSpacing.spacingX12,

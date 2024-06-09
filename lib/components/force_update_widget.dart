@@ -1,4 +1,6 @@
 import 'package:circuit_superintendent_tool/core/app_spacing.dart';
+import 'package:circuit_superintendent_tool/core/localizations.dart';
+import 'package:circuit_superintendent_tool/gen/assets.gen.dart';
 import 'package:circuit_superintendent_tool/services/force_update_service.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -25,17 +27,17 @@ class _ForceUpdateWrapperState extends State<ForceUpdateWrapper> {
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
-                  'Nova Versão disponível',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
+                Text(
+                  AppLocalizations.of(context)!.forceUpdateWidgetNewVersionAvailable,
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(AppSpacing.x12),
-                  child: Lottie.asset('assets/lotties/force_update.json'),
+                  child: Lottie.asset(Assets.lotties.forceUpdate),
                 ),
-                ElevatedButton(onPressed: () async => await _launchUrl(), child: Text('Atualizar')),
-                Text('Versão atual: ${widget.forceUpdateService.currentVersion}'),
-                Text('Nova versão: ${widget.forceUpdateService.remoteConfigVersion}'),
+                ElevatedButton(onPressed: () async => await _launchUrl(), child: Text(AppLocalizations.of(context)!.forceUpdateWidgetUpdate)),
+                Text(AppLocalizations.of(context)!.forceUpdateWidgetCurrentVersion(widget.forceUpdateService.currentVersion.toString())),
+                Text(AppLocalizations.of(context)!.forceUpdateWidgetNewVersion(widget.forceUpdateService.remoteConfigVersion.toString())),
               ],
             ),
           ));

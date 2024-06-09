@@ -1,8 +1,12 @@
 import 'package:circuit_superintendent_tool/components/congregation_card_widget.dart';
+import 'package:circuit_superintendent_tool/components/empty_screen.dart';
+import 'package:circuit_superintendent_tool/components/input_form_widget.dart';
 import 'package:circuit_superintendent_tool/core/app_spacing.dart';
 import 'package:circuit_superintendent_tool/core/inject.dart';
+import 'package:circuit_superintendent_tool/core/localizations.dart';
 import 'package:circuit_superintendent_tool/core/theme/app_colors.dart';
 import 'package:circuit_superintendent_tool/core/theme/app_text_theme.dart';
+import 'package:circuit_superintendent_tool/dto/congregation_dto.dart';
 import 'package:circuit_superintendent_tool/features/congregations/congregations_cubit.dart';
 import 'package:circuit_superintendent_tool/features/congregations/congregations_state.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +34,7 @@ class _CongregationPageState extends State<CongregationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Congregações'),
+          title: Text(AppLocalizations.of(context)!.congregationPageTitle),
           actions: [IconButton(onPressed: () => _showMyDialog(), icon: const Icon(Icons.add))],
         ),
         body: BlocBuilder<CongregationsCubit, CongregationsState>(
@@ -42,31 +46,43 @@ class _CongregationPageState extends State<CongregationPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const SizedBox(height: AppSpacing.x24),
-                      ...List.generate(congregations.length, (index) => CongregationCardWidget(congregation: congregations[index])),
+                      ...List.generate(
+                        congregations.length,
+                        (index) => CongregationCardWidget(
+                          key: Key(congregations[index].id.toString()),
+                          congregation: congregations[index],
+                          onEdit: () => _showMyDialog(congregation: congregations[index]),
+                          onDelete: () => congregationCubit.deleteCongregation(congregationId: congregations[index].id),
+                        ),
+                      ),
                     ],
                   ),
                 ),
-                empty: () => const Center(child: Text('empty')),
-                error: () => const Center(child: Text('error')),
+                empty: () => EmptyScreen(message: AppLocalizations.of(context)!.congregationPageEmpty),
+                error: () => Center(child: Text(AppLocalizations.of(context)!.congregationPageError)),
                 loading: () => const Center(child: CircularProgressIndicator()),
               );
             }));
   }
 
-  Future<void> _showMyDialog() async {
+  Future<void> _showMyDialog({CongregationDTO? congregation}) async {
     final TextEditingController nameController = TextEditingController();
     final TextEditingController cityController = TextEditingController();
+
+    nameController.text = congregation?.name ?? '';
+    cityController.text = congregation?.city ?? '';
+    final bool isCreating = congregation == null;
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Cadastrar Congregação'),
+          title: Text(isCreating ? AppLocalizations.of(context)!.congregationPageAddCongregation : AppLocalizations.of(context)!.congregationPageEditCongregation),
           content: SingleChildScrollView(
             child: ListBody(
               children: [
-                TextFormField(controller: nameController),
-                TextFormField(controller: cityController),
+                InputFormWidget(hintText: AppLocalizations.of(context)!.congregationPageAddEditCongregationHintCongregation, controller: nameController),
+                InputFormWidget(hintText: AppLocalizations.of(context)!.congregationPageAddEditCongregationHintCity, controller: cityController),
               ],
             ),
           ),
@@ -76,18 +92,22 @@ class _CongregationPageState extends State<CongregationPage> {
               children: [
                 TextButton(
                   child: Text(
-                    'Cancelar',
+                    AppLocalizations.of(context)!.congregationPageAddEditCongregationCancel,
                     style: AppTextTheme.bodyLarge.copyWith(color: AppColors.error400),
                   ),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
                 TextButton(
                   child: Text(
-                    'Salvar',
+                    AppLocalizations.of(context)!.congregationPageAddEditCongregationSave,
                     style: AppTextTheme.bodyLarge.copyWith(color: AppColors.primary600),
                   ),
                   onPressed: () async {
-                    await congregationCubit.createCongregation(name: nameController.text.trim(), city: cityController.text.trim());
+                    if (isCreating) {
+                      await congregationCubit.createCongregation(name: nameController.text.trim(), city: cityController.text.trim());
+                    } else {
+                      await congregationCubit.updateCongregation(id: congregation.id, name: nameController.text.trim(), city: cityController.text.trim());
+                    }
                     if (context.mounted) Navigator.of(context).pop();
                   },
                 ),

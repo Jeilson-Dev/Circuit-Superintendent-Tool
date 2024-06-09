@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRoute {
+  static String get navBarHomeRoute => '/';
+  static String get navBarVisitsRoute => '/visits';
+  static String get navBarCongregationRoute => '/congregations';
+  static String get navBarSettingsRoute => '/settings';
+
   static router(String initialRoute) => GoRouter(
         debugLogDiagnostics: true,
         initialLocation: initialRoute,

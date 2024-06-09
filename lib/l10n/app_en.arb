@@ -1,0 +1,67 @@
+{
+  "appNavigationBarCongregations": "Congreg.",
+  "appNavigationBarHome": "Início",
+  "appNavigationBarHomeSettings": "Ajustes",
+  "appNavigationBarVisits": "Visitas",
+  "congregationCardConfirmDelete": "Deseja mesmo apagar {congregationName}?",
+  "@congregationCardConfirmDelete": {
+    "placeholders": {
+      "congregationName": {
+        "type": "String"
+      }
+    }
+  },
+  "congregationCardConfirmDeleteNo": "Não",
+  "congregationCardConfirmDeleteYes": "Sim",
+  "congregationPageAddCongregation": "Cadastrar congregação",
+  "congregationPageAddEditCongregationCancel": "Cancelar",
+  "congregationPageAddEditCongregationHintCity": "Cidade",
+  "congregationPageAddEditCongregationHintCongregation": "Congregação",
+  "congregationPageAddEditCongregationSave": "Salvar",
+  "congregationPageEditCongregation": "Editar congregação",
+  "congregationPageEmpty": "Nenhuma congregação foi cadastrada ainda",
+  "congregationPageError": "Encontramos um problema ao tentar processar sua solicitação",
+  "congregationPageTitle": "Congregações",
+  "forceUpdateWidgetCurrentVersion": "Versão atual: {amount}",
+  "@forceUpdateWidgetCurrentVersion": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "forceUpdateWidgetNewVersion": "Nova versão: {amount}",
+  "@forceUpdateWidgetNewVersion": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "forceUpdateWidgetNewVersionAvailable": "Nova Versão disponível",
+  "forceUpdateWidgetUpdate": "Atualizar",
+  "privilegeBadgeElderAbbreviation": "AC - {amount}",
+  "@privilegeBadgeElderAbbreviation": {
+    "placeholders": {
+      "amount": {
+        "type": "int"
+      }
+    }
+  },
+  "privilegeBadgePioneerAbbreviation": "PR - {amount}",
+  "@privilegeBadgePioneerAbbreviation": {
+    "placeholders": {
+      "amount": {
+        "type": "int"
+      }
+    }
+  },
+  "privilegeBadgeServantAbbreviation": "SM - {amount}",
+  "@privilegeBadgeServantAbbreviation": {
+    "placeholders": {
+      "amount": {
+        "type": "int"
+      }
+    }
+  }
+}
