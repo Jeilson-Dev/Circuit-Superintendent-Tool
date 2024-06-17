@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:circuit_superintendent_tool/core/logger.dart';
 import 'package:circuit_superintendent_tool/dto/congregation_dto.dart';
-import 'package:circuit_superintendent_tool/features/congregations/congregations_state.dart';
+import 'package:circuit_superintendent_tool/features/settings/manage_congregations/manage_congregations_state.dart';
 import 'package:circuit_superintendent_tool/services/sqflite_service.dart';
 
 class CongregationsCubit extends Cubit<CongregationsState> {

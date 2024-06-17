@@ -10,6 +10,8 @@ class EmptyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       body: Center(
         child: Padding(
@@ -17,7 +19,7 @@ class EmptyScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(message, style: AppTextTheme.headlineSmall, textAlign: TextAlign.center),
+              Text(message, style: AppTextTheme.headlineSmall.copyWith(color: theme.appBarTheme.actionsIconTheme!.color), textAlign: TextAlign.center),
               SizedBox(child: Lottie.asset(Assets.lotties.cat)),
             ],
           ),

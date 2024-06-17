@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'congregations_state.dart';
+part of 'visits_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,13 +15,13 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$CongregationsState {
+mixin _$VisitsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() error,
     required TResult Function() empty,
-    required TResult Function(List<CongregationDTO> congregations) content,
+    required TResult Function(List<CongregationDTO> visits) content,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$CongregationsState {
     TResult? Function()? loading,
     TResult? Function()? error,
     TResult? Function()? empty,
-    TResult? Function(List<CongregationDTO> congregations)? content,
+    TResult? Function(List<CongregationDTO> visits)? content,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$CongregationsState {
     TResult Function()? loading,
     TResult Function()? error,
     TResult Function()? empty,
-    TResult Function(List<CongregationDTO> congregations)? content,
+    TResult Function(List<CongregationDTO> visits)? content,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -69,16 +69,16 @@ mixin _$CongregationsState {
 }
 
 /// @nodoc
-abstract class $CongregationsStateCopyWith<$Res> {
-  factory $CongregationsStateCopyWith(
-          CongregationsState value, $Res Function(CongregationsState) then) =
-      _$CongregationsStateCopyWithImpl<$Res, CongregationsState>;
+abstract class $VisitsStateCopyWith<$Res> {
+  factory $VisitsStateCopyWith(
+          VisitsState value, $Res Function(VisitsState) then) =
+      _$VisitsStateCopyWithImpl<$Res, VisitsState>;
 }
 
 /// @nodoc
-class _$CongregationsStateCopyWithImpl<$Res, $Val extends CongregationsState>
-    implements $CongregationsStateCopyWith<$Res> {
-  _$CongregationsStateCopyWithImpl(this._value, this._then);
+class _$VisitsStateCopyWithImpl<$Res, $Val extends VisitsState>
+    implements $VisitsStateCopyWith<$Res> {
+  _$VisitsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -95,7 +95,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$CongregationsStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$VisitsStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -109,7 +109,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'CongregationsState.loading()';
+    return 'VisitsState.loading()';
   }
 
   @override
@@ -127,7 +127,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() loading,
     required TResult Function() error,
     required TResult Function() empty,
-    required TResult Function(List<CongregationDTO> congregations) content,
+    required TResult Function(List<CongregationDTO> visits) content,
   }) {
     return loading();
   }
@@ -138,7 +138,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? loading,
     TResult? Function()? error,
     TResult? Function()? empty,
-    TResult? Function(List<CongregationDTO> congregations)? content,
+    TResult? Function(List<CongregationDTO> visits)? content,
   }) {
     return loading?.call();
   }
@@ -149,7 +149,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? loading,
     TResult Function()? error,
     TResult Function()? empty,
-    TResult Function(List<CongregationDTO> congregations)? content,
+    TResult Function(List<CongregationDTO> visits)? content,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -196,7 +196,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements CongregationsState {
+abstract class _Loading implements VisitsState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -209,7 +209,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$CongregationsStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$VisitsStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -223,7 +223,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'CongregationsState.error()';
+    return 'VisitsState.error()';
   }
 
   @override
@@ -241,7 +241,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() loading,
     required TResult Function() error,
     required TResult Function() empty,
-    required TResult Function(List<CongregationDTO> congregations) content,
+    required TResult Function(List<CongregationDTO> visits) content,
   }) {
     return error();
   }
@@ -252,7 +252,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? loading,
     TResult? Function()? error,
     TResult? Function()? empty,
-    TResult? Function(List<CongregationDTO> congregations)? content,
+    TResult? Function(List<CongregationDTO> visits)? content,
   }) {
     return error?.call();
   }
@@ -263,7 +263,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? loading,
     TResult Function()? error,
     TResult Function()? empty,
-    TResult Function(List<CongregationDTO> congregations)? content,
+    TResult Function(List<CongregationDTO> visits)? content,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -310,7 +310,7 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements CongregationsState {
+abstract class _Error implements VisitsState {
   const factory _Error() = _$ErrorImpl;
 }
 
@@ -323,7 +323,7 @@ abstract class _$$EmptyImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$EmptyImplCopyWithImpl<$Res>
-    extends _$CongregationsStateCopyWithImpl<$Res, _$EmptyImpl>
+    extends _$VisitsStateCopyWithImpl<$Res, _$EmptyImpl>
     implements _$$EmptyImplCopyWith<$Res> {
   __$$EmptyImplCopyWithImpl(
       _$EmptyImpl _value, $Res Function(_$EmptyImpl) _then)
@@ -337,7 +337,7 @@ class _$EmptyImpl implements _Empty {
 
   @override
   String toString() {
-    return 'CongregationsState.empty()';
+    return 'VisitsState.empty()';
   }
 
   @override
@@ -355,7 +355,7 @@ class _$EmptyImpl implements _Empty {
     required TResult Function() loading,
     required TResult Function() error,
     required TResult Function() empty,
-    required TResult Function(List<CongregationDTO> congregations) content,
+    required TResult Function(List<CongregationDTO> visits) content,
   }) {
     return empty();
   }
@@ -366,7 +366,7 @@ class _$EmptyImpl implements _Empty {
     TResult? Function()? loading,
     TResult? Function()? error,
     TResult? Function()? empty,
-    TResult? Function(List<CongregationDTO> congregations)? content,
+    TResult? Function(List<CongregationDTO> visits)? content,
   }) {
     return empty?.call();
   }
@@ -377,7 +377,7 @@ class _$EmptyImpl implements _Empty {
     TResult Function()? loading,
     TResult Function()? error,
     TResult Function()? empty,
-    TResult Function(List<CongregationDTO> congregations)? content,
+    TResult Function(List<CongregationDTO> visits)? content,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -424,7 +424,7 @@ class _$EmptyImpl implements _Empty {
   }
 }
 
-abstract class _Empty implements CongregationsState {
+abstract class _Empty implements VisitsState {
   const factory _Empty() = _$EmptyImpl;
 }
 
@@ -434,12 +434,12 @@ abstract class _$$ContentImplCopyWith<$Res> {
           _$ContentImpl value, $Res Function(_$ContentImpl) then) =
       __$$ContentImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<CongregationDTO> congregations});
+  $Res call({List<CongregationDTO> visits});
 }
 
 /// @nodoc
 class __$$ContentImplCopyWithImpl<$Res>
-    extends _$CongregationsStateCopyWithImpl<$Res, _$ContentImpl>
+    extends _$VisitsStateCopyWithImpl<$Res, _$ContentImpl>
     implements _$$ContentImplCopyWith<$Res> {
   __$$ContentImplCopyWithImpl(
       _$ContentImpl _value, $Res Function(_$ContentImpl) _then)
@@ -448,12 +448,12 @@ class __$$ContentImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? congregations = null,
+    Object? visits = null,
   }) {
     return _then(_$ContentImpl(
-      congregations: null == congregations
-          ? _value._congregations
-          : congregations // ignore: cast_nullable_to_non_nullable
+      visits: null == visits
+          ? _value._visits
+          : visits // ignore: cast_nullable_to_non_nullable
               as List<CongregationDTO>,
     ));
   }
@@ -462,20 +462,20 @@ class __$$ContentImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ContentImpl implements _Content {
-  const _$ContentImpl({required final List<CongregationDTO> congregations})
-      : _congregations = congregations;
+  const _$ContentImpl({required final List<CongregationDTO> visits})
+      : _visits = visits;
 
-  final List<CongregationDTO> _congregations;
+  final List<CongregationDTO> _visits;
   @override
-  List<CongregationDTO> get congregations {
-    if (_congregations is EqualUnmodifiableListView) return _congregations;
+  List<CongregationDTO> get visits {
+    if (_visits is EqualUnmodifiableListView) return _visits;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_congregations);
+    return EqualUnmodifiableListView(_visits);
   }
 
   @override
   String toString() {
-    return 'CongregationsState.content(congregations: $congregations)';
+    return 'VisitsState.content(visits: $visits)';
   }
 
   @override
@@ -483,13 +483,12 @@ class _$ContentImpl implements _Content {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ContentImpl &&
-            const DeepCollectionEquality()
-                .equals(other._congregations, _congregations));
+            const DeepCollectionEquality().equals(other._visits, _visits));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_congregations));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_visits));
 
   @JsonKey(ignore: true)
   @override
@@ -503,9 +502,9 @@ class _$ContentImpl implements _Content {
     required TResult Function() loading,
     required TResult Function() error,
     required TResult Function() empty,
-    required TResult Function(List<CongregationDTO> congregations) content,
+    required TResult Function(List<CongregationDTO> visits) content,
   }) {
-    return content(congregations);
+    return content(visits);
   }
 
   @override
@@ -514,9 +513,9 @@ class _$ContentImpl implements _Content {
     TResult? Function()? loading,
     TResult? Function()? error,
     TResult? Function()? empty,
-    TResult? Function(List<CongregationDTO> congregations)? content,
+    TResult? Function(List<CongregationDTO> visits)? content,
   }) {
-    return content?.call(congregations);
+    return content?.call(visits);
   }
 
   @override
@@ -525,11 +524,11 @@ class _$ContentImpl implements _Content {
     TResult Function()? loading,
     TResult Function()? error,
     TResult Function()? empty,
-    TResult Function(List<CongregationDTO> congregations)? content,
+    TResult Function(List<CongregationDTO> visits)? content,
     required TResult orElse(),
   }) {
     if (content != null) {
-      return content(congregations);
+      return content(visits);
     }
     return orElse();
   }
@@ -572,11 +571,11 @@ class _$ContentImpl implements _Content {
   }
 }
 
-abstract class _Content implements CongregationsState {
-  const factory _Content({required final List<CongregationDTO> congregations}) =
+abstract class _Content implements VisitsState {
+  const factory _Content({required final List<CongregationDTO> visits}) =
       _$ContentImpl;
 
-  List<CongregationDTO> get congregations;
+  List<CongregationDTO> get visits;
   @JsonKey(ignore: true)
   _$$ContentImplCopyWith<_$ContentImpl> get copyWith =>
       throw _privateConstructorUsedError;

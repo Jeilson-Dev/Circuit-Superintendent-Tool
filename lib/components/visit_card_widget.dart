@@ -1,7 +1,7 @@
 import 'package:circuit_superintendent_tool/components/badges/privilege_badge_widget.dart';
 import 'package:circuit_superintendent_tool/core/app_spacing.dart';
-import 'package:circuit_superintendent_tool/core/theme/app_colors.dart';
 import 'package:circuit_superintendent_tool/core/theme/app_text_theme.dart';
+import 'package:circuit_superintendent_tool/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class VisitCardWidget extends StatelessWidget {
@@ -30,25 +30,28 @@ class VisitCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context).extension<AppCardTheme>()!;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.x24, vertical: AppSpacing.x12),
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.white,
+            color: theme.backgroundColor,
+            border: Border.all(color: theme.shadowColor.withOpacity(0.5)),
             borderRadius: BorderRadius.circular(AppSpacing.x12),
-            boxShadow: [BoxShadow(color: AppColors.gray400, blurRadius: AppSpacing.x4, spreadRadius: 0.5, offset: Offset(2, 2))]),
+            boxShadow: [BoxShadow(color: theme.shadowColor, blurRadius: AppSpacing.x4, spreadRadius: 0.5, offset: const Offset(2, 2))]),
         child: Padding(
           padding: const EdgeInsets.all(AppSpacing.x16),
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text('$congregationName - $congregationCity', style: AppTextTheme.titleLarge),
+            Text('$congregationName - $congregationCity', style: AppTextTheme.titleLarge.copyWith(color: theme.textColor)),
             AppSpacing.spacingX4,
-            Text('Última visita: $lastVisit', style: AppTextTheme.bodySmall),
+            Text('Última visita: $lastVisit', style: AppTextTheme.bodySmall.copyWith(color: theme.textColor)),
             AppSpacing.spacingX4,
-            Text('Assistência às Reuniões:', style: AppTextTheme.labelLarge),
+            Text('Assistência às Reuniões:', style: AppTextTheme.labelLarge.copyWith(color: theme.textColor)),
             AppSpacing.spacingX4,
-            Text('Meio de semana - $attendingMeetingsWeekDay', style: AppTextTheme.bodySmall.copyWith(color: AppColors.gray600)),
+            Text('Meio de semana - $attendingMeetingsWeekDay', style: AppTextTheme.bodySmall.copyWith(color: theme.textColor)),
             AppSpacing.spacingX4,
-            Text('Final de semana - $attendingMeetingsWeekends', style: AppTextTheme.bodySmall.copyWith(color: AppColors.gray600)),
+            Text('Final de semana - $attendingMeetingsWeekends', style: AppTextTheme.bodySmall.copyWith(color: theme.textColor)),
             AppSpacing.spacingX12,
             Row(
               children: [
@@ -60,7 +63,7 @@ class VisitCardWidget extends StatelessWidget {
               ],
             ),
             AppSpacing.spacingX12,
-            Text('Próxima visita: $nextVisit', style: AppTextTheme.bodySmall.copyWith(color: AppColors.gray500)),
+            Text('Próxima visita: $nextVisit', style: AppTextTheme.bodySmall.copyWith(color: theme.textColor)),
           ]),
         ),
       ),

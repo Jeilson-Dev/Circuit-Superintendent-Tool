@@ -2,6 +2,7 @@ import 'package:circuit_superintendent_tool/core/app_spacing.dart';
 import 'package:circuit_superintendent_tool/core/localizations.dart';
 import 'package:circuit_superintendent_tool/core/theme/app_colors.dart';
 import 'package:circuit_superintendent_tool/core/theme/app_text_theme.dart';
+import 'package:circuit_superintendent_tool/core/theme/app_theme.dart';
 import 'package:circuit_superintendent_tool/dto/congregation_dto.dart';
 import 'package:flutter/material.dart';
 
@@ -21,16 +22,18 @@ class _CongregationCardWidgetState extends State<CongregationCardWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context).extension<AppCardTheme>()!;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.x24, vertical: AppSpacing.x12),
       child: GestureDetector(
         onTap: displayDelete ? null : widget.onEdit,
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: theme.backgroundColor,
+            border: Border.all(color: theme.shadowColor.withOpacity(0.5)),
             borderRadius: BorderRadius.circular(AppSpacing.x12),
             boxShadow: [
-              BoxShadow(color: AppColors.gray400, blurRadius: AppSpacing.x4, spreadRadius: 0.5, offset: const Offset(2, 2)),
+              BoxShadow(color: theme.shadowColor, blurRadius: AppSpacing.x4, spreadRadius: 0.5, offset: const Offset(2, 2)),
             ],
           ),
           child: Padding(
@@ -46,7 +49,7 @@ class _CongregationCardWidgetState extends State<CongregationCardWidget> {
                         child: Text(
                           maxLines: 2,
                           AppLocalizations.of(context)!.congregationCardConfirmDelete(widget.congregation.name),
-                          style: AppTextTheme.titleLarge,
+                          style: AppTextTheme.titleLarge.copyWith(color: theme.textColor),
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.center,
                         ),
@@ -77,9 +80,17 @@ class _CongregationCardWidgetState extends State<CongregationCardWidget> {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.60,
                     child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                      Text(widget.congregation.name, style: AppTextTheme.titleLarge, overflow: TextOverflow.ellipsis),
+                      Text(
+                        widget.congregation.name,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextTheme.titleLarge.copyWith(color: theme.textColor),
+                      ),
                       AppSpacing.spacingX4,
-                      Text(widget.congregation.city, style: AppTextTheme.bodySmall, overflow: TextOverflow.ellipsis),
+                      Text(
+                        widget.congregation.city,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextTheme.bodySmall.copyWith(color: theme.textColor),
+                      ),
                     ]),
                   ),
                 if (!displayDelete) IconButton(onPressed: () => setState(() => displayDelete = true), icon: Icon(Icons.delete, color: AppColors.error300))

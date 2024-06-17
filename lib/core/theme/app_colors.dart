@@ -36,18 +36,17 @@ class AppColors {
   static Color get gray900 => const Color(0xFF101828);
   static Color get gray950 => const Color(0xFF0C111D);
 
-  static Color get primary25 => const Color(0xFFFCFAFF);
-  static Color get primary50 => const Color(0xFFF9F5FF);
-  static Color get primary100 => const Color(0xFFF4EBFF);
-  static Color get primary200 => const Color(0xFFE9D7FE);
-  static Color get primary300 => const Color(0xFFD6BBFB);
-  static Color get primary400 => const Color(0xFFB692F6);
-  static Color get primary500 => const Color(0xFF9E77ED);
-  static Color get primary600 => const Color(0xFF7F56D9);
-  static Color get primary700 => const Color(0xFF6941C6);
-  static Color get primary800 => const Color(0xFF6941C6);
-  static Color get primary900 => const Color(0xFF42307D);
-  static Color get primary950 => const Color(0xFF2C1C5F);
+  static Color get primary50 => const Color(0xFFf6f7f9);
+  static Color get primary100 => const Color(0xFFeceff2);
+  static Color get primary200 => const Color(0xFFd4dbe3);
+  static Color get primary300 => const Color(0xFFafbbca);
+  static Color get primary400 => const Color(0xFF8497ac);
+  static Color get primary500 => const Color(0xFF647993);
+  static Color get primary600 => const Color(0xFF51637b);
+  static Color get primary700 => const Color(0xFF414f63);
+  static Color get primary800 => const Color(0xFF394453);
+  static Color get primary900 => const Color(0xFF333b47);
+  static Color get primary950 => const Color(0xFF22272f);
 
   static Color get error25 => const Color(0xFFFFFBFA);
   static Color get error50 => const Color(0xFFFEF3F2);

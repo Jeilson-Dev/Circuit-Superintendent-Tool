@@ -1,7 +1,7 @@
 import 'package:circuit_superintendent_tool/dto/congregation_dto.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'congregations_state.freezed.dart';
+part 'manage_congregations_state.freezed.dart';
 
 @freezed
 class CongregationsState with _$CongregationsState {

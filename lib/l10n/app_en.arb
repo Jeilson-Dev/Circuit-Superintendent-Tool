@@ -63,5 +63,13 @@
         "type": "int"
       }
     }
-  }
+  },
+  "settingsPageTitle": "Configurações",
+  "settingsPageTitleThemeSelector": "Esquema de cores",
+  "settingsPageTitleThemeSelectorAuto": "Auto",
+  "settingsPageTitleThemeSelectorDark": "Escuro",
+  "settingsPageTitleThemeSelectorLight": "Claro",
+  "visitsPageEmpty": "Nenhuma visita foi encontrada",
+  "visitsPageError": "Houve um erro ao carregar o registro de visitas",
+  "visitsPageTitle": "Visitas"
 }

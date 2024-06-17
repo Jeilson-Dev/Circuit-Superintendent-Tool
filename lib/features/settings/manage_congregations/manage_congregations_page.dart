@@ -1,26 +1,27 @@
 import 'package:circuit_superintendent_tool/components/congregation_card_widget.dart';
 import 'package:circuit_superintendent_tool/components/empty_screen.dart';
 import 'package:circuit_superintendent_tool/components/input_form_widget.dart';
+import 'package:circuit_superintendent_tool/components/navigation/app_nav.dart';
 import 'package:circuit_superintendent_tool/core/app_spacing.dart';
 import 'package:circuit_superintendent_tool/core/inject.dart';
 import 'package:circuit_superintendent_tool/core/localizations.dart';
 import 'package:circuit_superintendent_tool/core/theme/app_colors.dart';
 import 'package:circuit_superintendent_tool/core/theme/app_text_theme.dart';
 import 'package:circuit_superintendent_tool/dto/congregation_dto.dart';
-import 'package:circuit_superintendent_tool/features/congregations/congregations_cubit.dart';
-import 'package:circuit_superintendent_tool/features/congregations/congregations_state.dart';
+import 'package:circuit_superintendent_tool/features/settings/manage_congregations/manage_congregations_cubit.dart';
+import 'package:circuit_superintendent_tool/features/settings/manage_congregations/manage_congregations_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CongregationPage extends StatefulWidget {
-  const CongregationPage({super.key});
-  static String get path => 'congregations';
+class ManageCongregationPage extends StatefulWidget {
+  const ManageCongregationPage({super.key});
+  static String get path => 'manage_congregations';
 
   @override
-  State<CongregationPage> createState() => _CongregationPageState();
+  State<ManageCongregationPage> createState() => _ManageCongregationPageState();
 }
 
-class _CongregationPageState extends State<CongregationPage> {
+class _ManageCongregationPageState extends State<ManageCongregationPage> {
   final congregationCubit = inject<CongregationsCubit>();
 
   @override
@@ -55,6 +56,7 @@ class _CongregationPageState extends State<CongregationPage> {
                           onDelete: () => congregationCubit.deleteCongregation(congregationId: congregations[index].id),
                         ),
                       ),
+                      AppNav.placeholder()
                     ],
                   ),
                 ),
