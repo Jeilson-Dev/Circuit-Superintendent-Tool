@@ -70,11 +70,14 @@ mixin _$CongregationsState {
 
 /// @nodoc
 abstract class $CongregationsStateCopyWith<$Res> {
-  factory $CongregationsStateCopyWith(CongregationsState value, $Res Function(CongregationsState) then) = _$CongregationsStateCopyWithImpl<$Res, CongregationsState>;
+  factory $CongregationsStateCopyWith(
+          CongregationsState value, $Res Function(CongregationsState) then) =
+      _$CongregationsStateCopyWithImpl<$Res, CongregationsState>;
 }
 
 /// @nodoc
-class _$CongregationsStateCopyWithImpl<$Res, $Val extends CongregationsState> implements $CongregationsStateCopyWith<$Res> {
+class _$CongregationsStateCopyWithImpl<$Res, $Val extends CongregationsState>
+    implements $CongregationsStateCopyWith<$Res> {
   _$CongregationsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -85,12 +88,18 @@ class _$CongregationsStateCopyWithImpl<$Res, $Val extends CongregationsState> im
 
 /// @nodoc
 abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(_$LoadingImpl value, $Res Function(_$LoadingImpl) then) = __$$LoadingImplCopyWithImpl<$Res>;
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res> extends _$CongregationsStateCopyWithImpl<$Res, _$LoadingImpl> implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(_$LoadingImpl _value, $Res Function(_$LoadingImpl) _then) : super(_value, _then);
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$CongregationsStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -105,7 +114,8 @@ class _$LoadingImpl implements _Loading {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$LoadingImpl);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -192,12 +202,18 @@ abstract class _Loading implements CongregationsState {
 
 /// @nodoc
 abstract class _$$ErrorImplCopyWith<$Res> {
-  factory _$$ErrorImplCopyWith(_$ErrorImpl value, $Res Function(_$ErrorImpl) then) = __$$ErrorImplCopyWithImpl<$Res>;
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ErrorImplCopyWithImpl<$Res> extends _$CongregationsStateCopyWithImpl<$Res, _$ErrorImpl> implements _$$ErrorImplCopyWith<$Res> {
-  __$$ErrorImplCopyWithImpl(_$ErrorImpl _value, $Res Function(_$ErrorImpl) _then) : super(_value, _then);
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$CongregationsStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -212,7 +228,8 @@ class _$ErrorImpl implements _Error {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$ErrorImpl);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ErrorImpl);
   }
 
   @override
@@ -299,12 +316,18 @@ abstract class _Error implements CongregationsState {
 
 /// @nodoc
 abstract class _$$EmptyImplCopyWith<$Res> {
-  factory _$$EmptyImplCopyWith(_$EmptyImpl value, $Res Function(_$EmptyImpl) then) = __$$EmptyImplCopyWithImpl<$Res>;
+  factory _$$EmptyImplCopyWith(
+          _$EmptyImpl value, $Res Function(_$EmptyImpl) then) =
+      __$$EmptyImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$EmptyImplCopyWithImpl<$Res> extends _$CongregationsStateCopyWithImpl<$Res, _$EmptyImpl> implements _$$EmptyImplCopyWith<$Res> {
-  __$$EmptyImplCopyWithImpl(_$EmptyImpl _value, $Res Function(_$EmptyImpl) _then) : super(_value, _then);
+class __$$EmptyImplCopyWithImpl<$Res>
+    extends _$CongregationsStateCopyWithImpl<$Res, _$EmptyImpl>
+    implements _$$EmptyImplCopyWith<$Res> {
+  __$$EmptyImplCopyWithImpl(
+      _$EmptyImpl _value, $Res Function(_$EmptyImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -319,7 +342,8 @@ class _$EmptyImpl implements _Empty {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$EmptyImpl);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$EmptyImpl);
   }
 
   @override
@@ -406,14 +430,20 @@ abstract class _Empty implements CongregationsState {
 
 /// @nodoc
 abstract class _$$ContentImplCopyWith<$Res> {
-  factory _$$ContentImplCopyWith(_$ContentImpl value, $Res Function(_$ContentImpl) then) = __$$ContentImplCopyWithImpl<$Res>;
+  factory _$$ContentImplCopyWith(
+          _$ContentImpl value, $Res Function(_$ContentImpl) then) =
+      __$$ContentImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<CongregationDTO> congregations});
 }
 
 /// @nodoc
-class __$$ContentImplCopyWithImpl<$Res> extends _$CongregationsStateCopyWithImpl<$Res, _$ContentImpl> implements _$$ContentImplCopyWith<$Res> {
-  __$$ContentImplCopyWithImpl(_$ContentImpl _value, $Res Function(_$ContentImpl) _then) : super(_value, _then);
+class __$$ContentImplCopyWithImpl<$Res>
+    extends _$CongregationsStateCopyWithImpl<$Res, _$ContentImpl>
+    implements _$$ContentImplCopyWith<$Res> {
+  __$$ContentImplCopyWithImpl(
+      _$ContentImpl _value, $Res Function(_$ContentImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -432,7 +462,8 @@ class __$$ContentImplCopyWithImpl<$Res> extends _$CongregationsStateCopyWithImpl
 /// @nodoc
 
 class _$ContentImpl implements _Content {
-  const _$ContentImpl({required final List<CongregationDTO> congregations}) : _congregations = congregations;
+  const _$ContentImpl({required final List<CongregationDTO> congregations})
+      : _congregations = congregations;
 
   final List<CongregationDTO> _congregations;
   @override
@@ -450,16 +481,21 @@ class _$ContentImpl implements _Content {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ContentImpl && const DeepCollectionEquality().equals(other._congregations, _congregations));
+        (other.runtimeType == runtimeType &&
+            other is _$ContentImpl &&
+            const DeepCollectionEquality()
+                .equals(other._congregations, _congregations));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_congregations));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_congregations));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ContentImplCopyWith<_$ContentImpl> get copyWith => __$$ContentImplCopyWithImpl<_$ContentImpl>(this, _$identity);
+  _$$ContentImplCopyWith<_$ContentImpl> get copyWith =>
+      __$$ContentImplCopyWithImpl<_$ContentImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -537,9 +573,11 @@ class _$ContentImpl implements _Content {
 }
 
 abstract class _Content implements CongregationsState {
-  const factory _Content({required final List<CongregationDTO> congregations}) = _$ContentImpl;
+  const factory _Content({required final List<CongregationDTO> congregations}) =
+      _$ContentImpl;
 
   List<CongregationDTO> get congregations;
   @JsonKey(ignore: true)
-  _$$ContentImplCopyWith<_$ContentImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$ContentImplCopyWith<_$ContentImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

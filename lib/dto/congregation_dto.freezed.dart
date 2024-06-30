@@ -23,6 +23,7 @@ mixin _$CongregationDTO {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
+  VisitDTO? get lastVisit => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,9 @@ abstract class $CongregationDTOCopyWith<$Res> {
           CongregationDTO value, $Res Function(CongregationDTO) then) =
       _$CongregationDTOCopyWithImpl<$Res, CongregationDTO>;
   @useResult
-  $Res call({int id, String name, String city});
+  $Res call({int id, String name, String city, VisitDTO? lastVisit});
+
+  $VisitDTOCopyWith<$Res>? get lastVisit;
 }
 
 /// @nodoc
@@ -55,6 +58,7 @@ class _$CongregationDTOCopyWithImpl<$Res, $Val extends CongregationDTO>
     Object? id = null,
     Object? name = null,
     Object? city = null,
+    Object? lastVisit = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -69,7 +73,23 @@ class _$CongregationDTOCopyWithImpl<$Res, $Val extends CongregationDTO>
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String,
+      lastVisit: freezed == lastVisit
+          ? _value.lastVisit
+          : lastVisit // ignore: cast_nullable_to_non_nullable
+              as VisitDTO?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $VisitDTOCopyWith<$Res>? get lastVisit {
+    if (_value.lastVisit == null) {
+      return null;
+    }
+
+    return $VisitDTOCopyWith<$Res>(_value.lastVisit!, (value) {
+      return _then(_value.copyWith(lastVisit: value) as $Val);
+    });
   }
 }
 
@@ -81,7 +101,10 @@ abstract class _$$CongregationDTOImplCopyWith<$Res>
       __$$CongregationDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, String city});
+  $Res call({int id, String name, String city, VisitDTO? lastVisit});
+
+  @override
+  $VisitDTOCopyWith<$Res>? get lastVisit;
 }
 
 /// @nodoc
@@ -98,6 +121,7 @@ class __$$CongregationDTOImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? city = null,
+    Object? lastVisit = freezed,
   }) {
     return _then(_$CongregationDTOImpl(
       id: null == id
@@ -112,6 +136,10 @@ class __$$CongregationDTOImplCopyWithImpl<$Res>
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String,
+      lastVisit: freezed == lastVisit
+          ? _value.lastVisit
+          : lastVisit // ignore: cast_nullable_to_non_nullable
+              as VisitDTO?,
     ));
   }
 }
@@ -119,7 +147,8 @@ class __$$CongregationDTOImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$CongregationDTOImpl implements _CongregationDTO {
-  const _$CongregationDTOImpl({this.id = 0, this.name = '', this.city = ''});
+  const _$CongregationDTOImpl(
+      {this.id = 0, this.name = '', this.city = '', this.lastVisit});
 
   factory _$CongregationDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$CongregationDTOImplFromJson(json);
@@ -133,10 +162,12 @@ class _$CongregationDTOImpl implements _CongregationDTO {
   @override
   @JsonKey()
   final String city;
+  @override
+  final VisitDTO? lastVisit;
 
   @override
   String toString() {
-    return 'CongregationDTO(id: $id, name: $name, city: $city)';
+    return 'CongregationDTO(id: $id, name: $name, city: $city, lastVisit: $lastVisit)';
   }
 
   @override
@@ -146,12 +177,14 @@ class _$CongregationDTOImpl implements _CongregationDTO {
             other is _$CongregationDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.city, city) || other.city == city));
+            (identical(other.city, city) || other.city == city) &&
+            (identical(other.lastVisit, lastVisit) ||
+                other.lastVisit == lastVisit));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, city);
+  int get hashCode => Object.hash(runtimeType, id, name, city, lastVisit);
 
   @JsonKey(ignore: true)
   @override
@@ -172,7 +205,8 @@ abstract class _CongregationDTO implements CongregationDTO {
   const factory _CongregationDTO(
       {final int id,
       final String name,
-      final String city}) = _$CongregationDTOImpl;
+      final String city,
+      final VisitDTO? lastVisit}) = _$CongregationDTOImpl;
 
   factory _CongregationDTO.fromJson(Map<String, dynamic> json) =
       _$CongregationDTOImpl.fromJson;
@@ -183,6 +217,8 @@ abstract class _CongregationDTO implements CongregationDTO {
   String get name;
   @override
   String get city;
+  @override
+  VisitDTO? get lastVisit;
   @override
   @JsonKey(ignore: true)
   _$$CongregationDTOImplCopyWith<_$CongregationDTOImpl> get copyWith =>

@@ -12,6 +12,9 @@ _$CongregationDTOImpl _$$CongregationDTOImplFromJson(
       id: (json['id'] as num?)?.toInt() ?? 0,
       name: json['name'] as String? ?? '',
       city: json['city'] as String? ?? '',
+      lastVisit: json['lastVisit'] == null
+          ? null
+          : VisitDTO.fromJson(json['lastVisit'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$CongregationDTOImplToJson(
@@ -20,4 +23,5 @@ Map<String, dynamic> _$$CongregationDTOImplToJson(
       'id': instance.id,
       'name': instance.name,
       'city': instance.city,
+      'lastVisit': instance.lastVisit,
     };
