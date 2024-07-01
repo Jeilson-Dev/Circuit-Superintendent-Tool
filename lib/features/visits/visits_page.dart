@@ -1,11 +1,15 @@
 import 'package:circuit_superintendent_tool/components/empty_screen.dart';
+import 'package:circuit_superintendent_tool/components/input_form_widget.dart';
 import 'package:circuit_superintendent_tool/components/navigation/app_nav.dart';
 import 'package:circuit_superintendent_tool/components/visit_card_widget.dart';
 import 'package:circuit_superintendent_tool/core/app_spacing.dart';
 import 'package:circuit_superintendent_tool/core/inject.dart';
 import 'package:circuit_superintendent_tool/core/localizations.dart';
-import 'package:circuit_superintendent_tool/features/settings/manage_congregations/manage_congregations_cubit.dart';
-import 'package:circuit_superintendent_tool/features/settings/manage_congregations/manage_congregations_state.dart';
+import 'package:circuit_superintendent_tool/core/theme/app_colors.dart';
+import 'package:circuit_superintendent_tool/core/theme/app_text_theme.dart';
+import 'package:circuit_superintendent_tool/dto/congregation_dto.dart';
+import 'package:circuit_superintendent_tool/features/visits/visits_cubit.dart';
+import 'package:circuit_superintendent_tool/features/visits/visits_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,11 +22,11 @@ class VisitsPage extends StatefulWidget {
 }
 
 class _VisitsPageState extends State<VisitsPage> {
-  final congregationCubit = inject<CongregationsCubit>();
+  final visitsCubit = inject<VisitsCubit>();
 
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) => congregationCubit.loadCongregations());
+    WidgetsBinding.instance.addPostFrameCallback((_) => visitsCubit.loadCongregations());
 
     super.initState();
   }
@@ -32,10 +36,10 @@ class _VisitsPageState extends State<VisitsPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text(AppLocalizations.of(context)!.visitsPageTitle),
-          actions: [IconButton(onPressed: () {}, /* => _showMyDialog(),*/ icon: const Icon(Icons.add))],
+          actions: [IconButton(onPressed: () => _showMyDialog(), icon: const Icon(Icons.add))],
         ),
-        body: BlocBuilder<CongregationsCubit, CongregationsState>(
-            bloc: congregationCubit,
+        body: BlocBuilder<VisitsCubit, VisitsState>(
+            bloc: visitsCubit,
             builder: (context, state) {
               return state.when(
                 content: (congregations) => SingleChildScrollView(
@@ -70,57 +74,67 @@ class _VisitsPageState extends State<VisitsPage> {
             }));
   }
 
-  // Future<void> _showMyDialog({CongregationDTO? congregation}) async {
-  //   final TextEditingController nameController = TextEditingController();
-  //   final TextEditingController cityController = TextEditingController();
+  Future<void> _showMyDialog({CongregationDTO? congregation}) async {
+    final TextEditingController nameController = TextEditingController();
+    final TextEditingController cityController = TextEditingController();
 
-  //   nameController.text = congregation?.name ?? '';
-  //   cityController.text = congregation?.city ?? '';
-  //   final bool isCreating = congregation == null;
-  //   return showDialog<void>(
-  //     context: context,
-  //     barrierDismissible: false, // user must tap button!
-  //     builder: (BuildContext context) {
-  //       return AlertDialog(
-  //         title: Text(isCreating ? AppLocalizations.of(context)!.visitsPageAddCongregation : AppLocalizations.of(context)!.visitsPageEditCongregation),
-  //         content: SingleChildScrollView(
-  //           child: ListBody(
-  //             children: [
-  //               InputFormWidget(hintText: AppLocalizations.of(context)!.visitsPageAddEditCongregationHintCongregation, controller: nameController),
-  //               InputFormWidget(hintText: AppLocalizations.of(context)!.visitsPageAddEditCongregationHintCity, controller: cityController),
-  //             ],
-  //           ),
-  //         ),
-  //         actions: [
-  //           Row(
-  //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  //             children: [
-  //               TextButton(
-  //                 child: Text(
-  //                   AppLocalizations.of(context)!.visitsPageAddEditCongregationCancel,
-  //                   style: AppTextTheme.bodyLarge.copyWith(color: AppColors.error400),
-  //                 ),
-  //                 onPressed: () => Navigator.of(context).pop(),
-  //               ),
-  //               TextButton(
-  //                 child: Text(
-  //                   AppLocalizations.of(context)!.visitsPageAddEditCongregationSave,
-  //                   style: AppTextTheme.bodyLarge.copyWith(color: AppColors.primary600),
-  //                 ),
-  //                 onPressed: () async {
-  //                   if (isCreating) {
-  //                     await congregationCubit.createCongregation(name: nameController.text.trim(), city: cityController.text.trim());
-  //                   } else {
-  //                     await congregationCubit.updateCongregation(id: congregation.id, name: nameController.text.trim(), city: cityController.text.trim());
-  //                   }
-  //                   if (context.mounted) Navigator.of(context).pop();
-  //                 },
-  //               ),
-  //             ],
-  //           )
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
+    nameController.text = congregation?.name ?? '';
+    cityController.text = congregation?.city ?? '';
+    final bool isCreating = congregation == null;
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('New Visit'
+              // isCreating ? AppLocalizations.of(context)!.visitsPageAddCongregation : AppLocalizations.of(context)!.visitsPageEditCongregation
+              ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: [
+                InputFormWidget(
+                    hintText: 'Congregacao',
+                    // AppLocalizations.of(context)!.visitsPageAddEditCongregationHintCongregation,
+                    controller: nameController),
+                InputFormWidget(
+                    hintText: 'Cidade',
+                    // AppLocalizations.of(context)!.visitsPageAddEditCongregationHintCity,
+                    controller: cityController),
+              ],
+            ),
+          ),
+          actions: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                TextButton(
+                  child: Text(
+                    'Cancel',
+                    // AppLocalizations.of(context)!.visitsPageAddEditCongregationCancel,
+                    style: AppTextTheme.bodyLarge.copyWith(color: AppColors.error400),
+                  ),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+                TextButton(
+                  child: Text(
+                    'Save',
+                    // AppLocalizations.of(context)!.visitsPageAddEditCongregationSave,
+                    style: AppTextTheme.bodyLarge.copyWith(color: AppColors.primary600),
+                  ),
+                  onPressed: () async {
+                    if (isCreating) {
+                      await visitsCubit.createVisit(name: nameController.text.trim(), city: cityController.text.trim());
+                    } else {
+                      await visitsCubit.updateCongregation(id: congregation.id, name: nameController.text.trim(), city: cityController.text.trim());
+                    }
+                    if (context.mounted) Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            )
+          ],
+        );
+      },
+    );
+  }
 }

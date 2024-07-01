@@ -43,13 +43,13 @@ mixin _$GroupDTO {
   @JsonKey(name: 'auxiliary_pioneers')
   int get auxiliaryPioneers => throw _privateConstructorUsedError;
   @JsonKey(name: 'irregular_publishers')
-  int get irregularPublishers => throw _privateConstructorUsedError;
-  @JsonKey(name: 'potential_pioneer')
-  List<String> get potentialPioneer => throw _privateConstructorUsedError;
-  @JsonKey(name: 'potential_elder')
-  List<String> get potentialElder => throw _privateConstructorUsedError;
-  @JsonKey(name: 'potential_ministerial_servant')
-  List<String> get potentialMinisterialServant =>
+  List<String> get irregularPublishers => throw _privateConstructorUsedError;
+  @JsonKey(name: 'potential_pioneers')
+  List<String> get potentialPioneers => throw _privateConstructorUsedError;
+  @JsonKey(name: 'potential_elders')
+  List<String> get potentialElders => throw _privateConstructorUsedError;
+  @JsonKey(name: 'potential_ministerial_servants')
+  List<String> get potentialMinisterialServants =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -76,11 +76,11 @@ abstract class $GroupDTOCopyWith<$Res> {
       @JsonKey(name: 'not_baptized_publishers') int notBaptizedPublishers,
       @JsonKey(name: 'regular_pioneers') int regularPioneers,
       @JsonKey(name: 'auxiliary_pioneers') int auxiliaryPioneers,
-      @JsonKey(name: 'irregular_publishers') int irregularPublishers,
-      @JsonKey(name: 'potential_pioneer') List<String> potentialPioneer,
-      @JsonKey(name: 'potential_elder') List<String> potentialElder,
-      @JsonKey(name: 'potential_ministerial_servant')
-      List<String> potentialMinisterialServant});
+      @JsonKey(name: 'irregular_publishers') List<String> irregularPublishers,
+      @JsonKey(name: 'potential_pioneers') List<String> potentialPioneers,
+      @JsonKey(name: 'potential_elders') List<String> potentialElders,
+      @JsonKey(name: 'potential_ministerial_servants')
+      List<String> potentialMinisterialServants});
 }
 
 /// @nodoc
@@ -109,9 +109,9 @@ class _$GroupDTOCopyWithImpl<$Res, $Val extends GroupDTO>
     Object? regularPioneers = null,
     Object? auxiliaryPioneers = null,
     Object? irregularPublishers = null,
-    Object? potentialPioneer = null,
-    Object? potentialElder = null,
-    Object? potentialMinisterialServant = null,
+    Object? potentialPioneers = null,
+    Object? potentialElders = null,
+    Object? potentialMinisterialServants = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -165,18 +165,18 @@ class _$GroupDTOCopyWithImpl<$Res, $Val extends GroupDTO>
       irregularPublishers: null == irregularPublishers
           ? _value.irregularPublishers
           : irregularPublishers // ignore: cast_nullable_to_non_nullable
-              as int,
-      potentialPioneer: null == potentialPioneer
-          ? _value.potentialPioneer
-          : potentialPioneer // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      potentialElder: null == potentialElder
-          ? _value.potentialElder
-          : potentialElder // ignore: cast_nullable_to_non_nullable
+      potentialPioneers: null == potentialPioneers
+          ? _value.potentialPioneers
+          : potentialPioneers // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      potentialMinisterialServant: null == potentialMinisterialServant
-          ? _value.potentialMinisterialServant
-          : potentialMinisterialServant // ignore: cast_nullable_to_non_nullable
+      potentialElders: null == potentialElders
+          ? _value.potentialElders
+          : potentialElders // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      potentialMinisterialServants: null == potentialMinisterialServants
+          ? _value.potentialMinisterialServants
+          : potentialMinisterialServants // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ) as $Val);
   }
@@ -203,11 +203,11 @@ abstract class _$$GroupDTOImplCopyWith<$Res>
       @JsonKey(name: 'not_baptized_publishers') int notBaptizedPublishers,
       @JsonKey(name: 'regular_pioneers') int regularPioneers,
       @JsonKey(name: 'auxiliary_pioneers') int auxiliaryPioneers,
-      @JsonKey(name: 'irregular_publishers') int irregularPublishers,
-      @JsonKey(name: 'potential_pioneer') List<String> potentialPioneer,
-      @JsonKey(name: 'potential_elder') List<String> potentialElder,
-      @JsonKey(name: 'potential_ministerial_servant')
-      List<String> potentialMinisterialServant});
+      @JsonKey(name: 'irregular_publishers') List<String> irregularPublishers,
+      @JsonKey(name: 'potential_pioneers') List<String> potentialPioneers,
+      @JsonKey(name: 'potential_elders') List<String> potentialElders,
+      @JsonKey(name: 'potential_ministerial_servants')
+      List<String> potentialMinisterialServants});
 }
 
 /// @nodoc
@@ -234,9 +234,9 @@ class __$$GroupDTOImplCopyWithImpl<$Res>
     Object? regularPioneers = null,
     Object? auxiliaryPioneers = null,
     Object? irregularPublishers = null,
-    Object? potentialPioneer = null,
-    Object? potentialElder = null,
-    Object? potentialMinisterialServant = null,
+    Object? potentialPioneers = null,
+    Object? potentialElders = null,
+    Object? potentialMinisterialServants = null,
   }) {
     return _then(_$GroupDTOImpl(
       id: null == id
@@ -288,20 +288,20 @@ class __$$GroupDTOImplCopyWithImpl<$Res>
           : auxiliaryPioneers // ignore: cast_nullable_to_non_nullable
               as int,
       irregularPublishers: null == irregularPublishers
-          ? _value.irregularPublishers
+          ? _value._irregularPublishers
           : irregularPublishers // ignore: cast_nullable_to_non_nullable
-              as int,
-      potentialPioneer: null == potentialPioneer
-          ? _value._potentialPioneer
-          : potentialPioneer // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      potentialElder: null == potentialElder
-          ? _value._potentialElder
-          : potentialElder // ignore: cast_nullable_to_non_nullable
+      potentialPioneers: null == potentialPioneers
+          ? _value._potentialPioneers
+          : potentialPioneers // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      potentialMinisterialServant: null == potentialMinisterialServant
-          ? _value._potentialMinisterialServant
-          : potentialMinisterialServant // ignore: cast_nullable_to_non_nullable
+      potentialElders: null == potentialElders
+          ? _value._potentialElders
+          : potentialElders // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      potentialMinisterialServants: null == potentialMinisterialServants
+          ? _value._potentialMinisterialServants
+          : potentialMinisterialServants // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
   }
@@ -324,16 +324,18 @@ class _$GroupDTOImpl extends _GroupDTO {
       @JsonKey(name: 'not_baptized_publishers') this.notBaptizedPublishers = 0,
       @JsonKey(name: 'regular_pioneers') this.regularPioneers = 0,
       @JsonKey(name: 'auxiliary_pioneers') this.auxiliaryPioneers = 0,
-      @JsonKey(name: 'irregular_publishers') this.irregularPublishers = 0,
-      @JsonKey(name: 'potential_pioneer')
-      final List<String> potentialPioneer = const [],
-      @JsonKey(name: 'potential_elder')
-      final List<String> potentialElder = const [],
-      @JsonKey(name: 'potential_ministerial_servant')
-      final List<String> potentialMinisterialServant = const []})
-      : _potentialPioneer = potentialPioneer,
-        _potentialElder = potentialElder,
-        _potentialMinisterialServant = potentialMinisterialServant,
+      @JsonKey(name: 'irregular_publishers')
+      final List<String> irregularPublishers = const [],
+      @JsonKey(name: 'potential_pioneers')
+      final List<String> potentialPioneers = const [],
+      @JsonKey(name: 'potential_elders')
+      final List<String> potentialElders = const [],
+      @JsonKey(name: 'potential_ministerial_servants')
+      final List<String> potentialMinisterialServants = const []})
+      : _irregularPublishers = irregularPublishers,
+        _potentialPioneers = potentialPioneers,
+        _potentialElders = potentialElders,
+        _potentialMinisterialServants = potentialMinisterialServants,
         super._();
 
   factory _$GroupDTOImpl.fromJson(Map<String, dynamic> json) =>
@@ -375,41 +377,48 @@ class _$GroupDTOImpl extends _GroupDTO {
   @override
   @JsonKey(name: 'auxiliary_pioneers')
   final int auxiliaryPioneers;
+  final List<String> _irregularPublishers;
   @override
   @JsonKey(name: 'irregular_publishers')
-  final int irregularPublishers;
-  final List<String> _potentialPioneer;
-  @override
-  @JsonKey(name: 'potential_pioneer')
-  List<String> get potentialPioneer {
-    if (_potentialPioneer is EqualUnmodifiableListView)
-      return _potentialPioneer;
+  List<String> get irregularPublishers {
+    if (_irregularPublishers is EqualUnmodifiableListView)
+      return _irregularPublishers;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_potentialPioneer);
+    return EqualUnmodifiableListView(_irregularPublishers);
   }
 
-  final List<String> _potentialElder;
+  final List<String> _potentialPioneers;
   @override
-  @JsonKey(name: 'potential_elder')
-  List<String> get potentialElder {
-    if (_potentialElder is EqualUnmodifiableListView) return _potentialElder;
+  @JsonKey(name: 'potential_pioneers')
+  List<String> get potentialPioneers {
+    if (_potentialPioneers is EqualUnmodifiableListView)
+      return _potentialPioneers;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_potentialElder);
+    return EqualUnmodifiableListView(_potentialPioneers);
   }
 
-  final List<String> _potentialMinisterialServant;
+  final List<String> _potentialElders;
   @override
-  @JsonKey(name: 'potential_ministerial_servant')
-  List<String> get potentialMinisterialServant {
-    if (_potentialMinisterialServant is EqualUnmodifiableListView)
-      return _potentialMinisterialServant;
+  @JsonKey(name: 'potential_elders')
+  List<String> get potentialElders {
+    if (_potentialElders is EqualUnmodifiableListView) return _potentialElders;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_potentialMinisterialServant);
+    return EqualUnmodifiableListView(_potentialElders);
+  }
+
+  final List<String> _potentialMinisterialServants;
+  @override
+  @JsonKey(name: 'potential_ministerial_servants')
+  List<String> get potentialMinisterialServants {
+    if (_potentialMinisterialServants is EqualUnmodifiableListView)
+      return _potentialMinisterialServants;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_potentialMinisterialServants);
   }
 
   @override
   String toString() {
-    return 'GroupDTO(id: $id, congregationId: $congregationId, visitId: $visitId, responsible: $responsible, groupNumber: $groupNumber, studies: $studies, publisherWithoutStudies: $publisherWithoutStudies, activePublishers: $activePublishers, baptizedPublishers: $baptizedPublishers, notBaptizedPublishers: $notBaptizedPublishers, regularPioneers: $regularPioneers, auxiliaryPioneers: $auxiliaryPioneers, irregularPublishers: $irregularPublishers, potentialPioneer: $potentialPioneer, potentialElder: $potentialElder, potentialMinisterialServant: $potentialMinisterialServant)';
+    return 'GroupDTO(id: $id, congregationId: $congregationId, visitId: $visitId, responsible: $responsible, groupNumber: $groupNumber, studies: $studies, publisherWithoutStudies: $publisherWithoutStudies, activePublishers: $activePublishers, baptizedPublishers: $baptizedPublishers, notBaptizedPublishers: $notBaptizedPublishers, regularPioneers: $regularPioneers, auxiliaryPioneers: $auxiliaryPioneers, irregularPublishers: $irregularPublishers, potentialPioneers: $potentialPioneers, potentialElders: $potentialElders, potentialMinisterialServants: $potentialMinisterialServants)';
   }
 
   @override
@@ -439,15 +448,15 @@ class _$GroupDTOImpl extends _GroupDTO {
                 other.regularPioneers == regularPioneers) &&
             (identical(other.auxiliaryPioneers, auxiliaryPioneers) ||
                 other.auxiliaryPioneers == auxiliaryPioneers) &&
-            (identical(other.irregularPublishers, irregularPublishers) ||
-                other.irregularPublishers == irregularPublishers) &&
             const DeepCollectionEquality()
-                .equals(other._potentialPioneer, _potentialPioneer) &&
+                .equals(other._irregularPublishers, _irregularPublishers) &&
             const DeepCollectionEquality()
-                .equals(other._potentialElder, _potentialElder) &&
+                .equals(other._potentialPioneers, _potentialPioneers) &&
+            const DeepCollectionEquality()
+                .equals(other._potentialElders, _potentialElders) &&
             const DeepCollectionEquality().equals(
-                other._potentialMinisterialServant,
-                _potentialMinisterialServant));
+                other._potentialMinisterialServants,
+                _potentialMinisterialServants));
   }
 
   @JsonKey(ignore: true)
@@ -466,10 +475,10 @@ class _$GroupDTOImpl extends _GroupDTO {
       notBaptizedPublishers,
       regularPioneers,
       auxiliaryPioneers,
-      irregularPublishers,
-      const DeepCollectionEquality().hash(_potentialPioneer),
-      const DeepCollectionEquality().hash(_potentialElder),
-      const DeepCollectionEquality().hash(_potentialMinisterialServant));
+      const DeepCollectionEquality().hash(_irregularPublishers),
+      const DeepCollectionEquality().hash(_potentialPioneers),
+      const DeepCollectionEquality().hash(_potentialElders),
+      const DeepCollectionEquality().hash(_potentialMinisterialServants));
 
   @JsonKey(ignore: true)
   @override
@@ -500,11 +509,12 @@ abstract class _GroupDTO extends GroupDTO {
       @JsonKey(name: 'not_baptized_publishers') final int notBaptizedPublishers,
       @JsonKey(name: 'regular_pioneers') final int regularPioneers,
       @JsonKey(name: 'auxiliary_pioneers') final int auxiliaryPioneers,
-      @JsonKey(name: 'irregular_publishers') final int irregularPublishers,
-      @JsonKey(name: 'potential_pioneer') final List<String> potentialPioneer,
-      @JsonKey(name: 'potential_elder') final List<String> potentialElder,
-      @JsonKey(name: 'potential_ministerial_servant')
-      final List<String> potentialMinisterialServant}) = _$GroupDTOImpl;
+      @JsonKey(name: 'irregular_publishers')
+      final List<String> irregularPublishers,
+      @JsonKey(name: 'potential_pioneers') final List<String> potentialPioneers,
+      @JsonKey(name: 'potential_elders') final List<String> potentialElders,
+      @JsonKey(name: 'potential_ministerial_servants')
+      final List<String> potentialMinisterialServants}) = _$GroupDTOImpl;
   const _GroupDTO._() : super._();
 
   factory _GroupDTO.fromJson(Map<String, dynamic> json) =
@@ -546,16 +556,16 @@ abstract class _GroupDTO extends GroupDTO {
   int get auxiliaryPioneers;
   @override
   @JsonKey(name: 'irregular_publishers')
-  int get irregularPublishers;
+  List<String> get irregularPublishers;
   @override
-  @JsonKey(name: 'potential_pioneer')
-  List<String> get potentialPioneer;
+  @JsonKey(name: 'potential_pioneers')
+  List<String> get potentialPioneers;
   @override
-  @JsonKey(name: 'potential_elder')
-  List<String> get potentialElder;
+  @JsonKey(name: 'potential_elders')
+  List<String> get potentialElders;
   @override
-  @JsonKey(name: 'potential_ministerial_servant')
-  List<String> get potentialMinisterialServant;
+  @JsonKey(name: 'potential_ministerial_servants')
+  List<String> get potentialMinisterialServants;
   @override
   @JsonKey(ignore: true)
   _$$GroupDTOImplCopyWith<_$GroupDTOImpl> get copyWith =>

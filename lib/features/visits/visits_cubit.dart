@@ -23,8 +23,8 @@ class VisitsCubit extends Cubit<VisitsState> {
     }
   }
 
-  Future<void> createCongregation({required String name, required String city}) async {
-    await service.createCongregation(name: name, city: city);
+  Future<void> createVisit({required String name, required String city}) async {
+    await service.createVisit(congregationId: 1);
     loadCongregations();
   }
 

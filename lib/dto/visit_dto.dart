@@ -10,7 +10,6 @@ class VisitDTO with _$VisitDTO {
   const factory VisitDTO({
     @Default(0) int id,
     VisitDTO? previousVisit,
-    @Default(0) @JsonKey(name: 'previous_visit_id') int previousVisitId,
     @Default(0) @JsonKey(name: 'congregation_id') int congregationId,
     @Default('') @JsonKey(name: 'visit_date') String visitDate,
     @Default(0) @JsonKey(name: 'mid_week_assistance') int midWeekAssistance,
@@ -30,7 +29,7 @@ class VisitDTO with _$VisitDTO {
   int get publishersBaptizedOnCongregation => groups.map((group) => group.baptizedPublishers).reduce((a, b) => a + b);
   int get auxiliaryPioneersOnCongregation => groups.map((group) => group.auxiliaryPioneers).reduce((a, b) => a + b);
   int get regularPioneersOnCongregation => groups.map((group) => group.regularPioneers).reduce((a, b) => a + b);
-  int get irregularPublishers => groups.map((group) => group.irregularPublishers).reduce((a, b) => a + b);
+  int get irregularPublishers => groups.map((group) => group.irregularPublishers.length).reduce((a, b) => a + b);
 
   int _getPositiveValue({required int currentValue, required int? previousValue}) {
     if (previousValue == null) return 0;

@@ -4,6 +4,7 @@ import 'package:circuit_superintendent_tool/core/app_spacing.dart';
 import 'package:circuit_superintendent_tool/core/feature_toggles.dart';
 import 'package:circuit_superintendent_tool/core/inject.dart';
 import 'package:circuit_superintendent_tool/core/localizations.dart';
+import 'package:circuit_superintendent_tool/features/list_congregations/list_congregations_page.dart';
 import 'package:circuit_superintendent_tool/features/settings/settings_page.dart';
 import 'package:circuit_superintendent_tool/features/visits/visits_page.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +52,7 @@ class _AppNavState extends State<AppNav> {
                 _NavItem(
                   label: AppLocalizations.of(context)!.appNavigationBarCongregations,
                   icon: Icons.location_city_rounded,
-                  route: '/congregations',
+                  route: '/${ListCongregationPage.path}',
                   currentPath: currentPath,
                 ),
               if (features.menuItemSettings)

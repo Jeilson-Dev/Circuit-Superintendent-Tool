@@ -8,10 +8,10 @@ import 'package:flutter/material.dart';
 
 class CongregationCardWidget extends StatefulWidget {
   final CongregationDTO congregation;
-  final void Function() onDelete;
-  final void Function() onEdit;
+  final void Function()? onDelete;
+  final void Function()? onEdit;
 
-  const CongregationCardWidget({super.key, required this.congregation, required this.onDelete, required this.onEdit});
+  const CongregationCardWidget({super.key, required this.congregation, this.onDelete, this.onEdit});
 
   @override
   State<CongregationCardWidget> createState() => _CongregationCardWidgetState();
@@ -63,7 +63,7 @@ class _CongregationCardWidgetState extends State<CongregationCardWidget> {
                               AppLocalizations.of(context)!.congregationCardConfirmDeleteYes,
                               style: AppTextTheme.bodyMedium.copyWith(color: AppColors.error400),
                             ),
-                            onPressed: () => widget.onDelete(),
+                            onPressed: widget.onDelete,
                           ),
                           TextButton(
                             child: Text(
@@ -93,7 +93,8 @@ class _CongregationCardWidgetState extends State<CongregationCardWidget> {
                       ),
                     ]),
                   ),
-                if (!displayDelete) IconButton(onPressed: () => setState(() => displayDelete = true), icon: Icon(Icons.delete, color: AppColors.error300))
+                if (!displayDelete && widget.onDelete != null)
+                  IconButton(onPressed: () => setState(() => displayDelete = true), icon: Icon(Icons.delete, color: AppColors.error300))
               ],
             ),
           ),

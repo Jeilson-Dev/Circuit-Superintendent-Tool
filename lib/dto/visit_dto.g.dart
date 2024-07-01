@@ -12,7 +12,6 @@ _$VisitDTOImpl _$$VisitDTOImplFromJson(Map<String, dynamic> json) =>
       previousVisit: json['previousVisit'] == null
           ? null
           : VisitDTO.fromJson(json['previousVisit'] as Map<String, dynamic>),
-      previousVisitId: (json['previous_visit_id'] as num?)?.toInt() ?? 0,
       congregationId: (json['congregation_id'] as num?)?.toInt() ?? 0,
       visitDate: json['visit_date'] as String? ?? '',
       midWeekAssistance: (json['mid_week_assistance'] as num?)?.toInt() ?? 0,
@@ -30,7 +29,6 @@ Map<String, dynamic> _$$VisitDTOImplToJson(_$VisitDTOImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'previousVisit': instance.previousVisit,
-      'previous_visit_id': instance.previousVisitId,
       'congregation_id': instance.congregationId,
       'visit_date': instance.visitDate,
       'mid_week_assistance': instance.midWeekAssistance,

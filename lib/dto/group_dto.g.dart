@@ -22,17 +22,20 @@ _$GroupDTOImpl _$$GroupDTOImplFromJson(Map<String, dynamic> json) =>
           (json['not_baptized_publishers'] as num?)?.toInt() ?? 0,
       regularPioneers: (json['regular_pioneers'] as num?)?.toInt() ?? 0,
       auxiliaryPioneers: (json['auxiliary_pioneers'] as num?)?.toInt() ?? 0,
-      irregularPublishers: (json['irregular_publishers'] as num?)?.toInt() ?? 0,
-      potentialPioneer: (json['potential_pioneer'] as List<dynamic>?)
+      irregularPublishers: (json['irregular_publishers'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],
-      potentialElder: (json['potential_elder'] as List<dynamic>?)
+      potentialPioneers: (json['potential_pioneers'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],
-      potentialMinisterialServant:
-          (json['potential_ministerial_servant'] as List<dynamic>?)
+      potentialElders: (json['potential_elders'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      potentialMinisterialServants:
+          (json['potential_ministerial_servants'] as List<dynamic>?)
                   ?.map((e) => e as String)
                   .toList() ??
               const [],
@@ -53,7 +56,7 @@ Map<String, dynamic> _$$GroupDTOImplToJson(_$GroupDTOImpl instance) =>
       'regular_pioneers': instance.regularPioneers,
       'auxiliary_pioneers': instance.auxiliaryPioneers,
       'irregular_publishers': instance.irregularPublishers,
-      'potential_pioneer': instance.potentialPioneer,
-      'potential_elder': instance.potentialElder,
-      'potential_ministerial_servant': instance.potentialMinisterialServant,
+      'potential_pioneers': instance.potentialPioneers,
+      'potential_elders': instance.potentialElders,
+      'potential_ministerial_servants': instance.potentialMinisterialServants,
     };

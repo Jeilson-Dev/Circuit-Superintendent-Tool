@@ -1,4 +1,5 @@
 import 'package:circuit_superintendent_tool/components/navigation/app_nav.dart';
+import 'package:circuit_superintendent_tool/features/list_congregations/list_congregations_page.dart';
 import 'package:circuit_superintendent_tool/features/settings/manage_congregations/manage_congregations_page.dart';
 import 'package:circuit_superintendent_tool/features/settings/settings_page.dart';
 import 'package:circuit_superintendent_tool/features/visits/visits_page.dart';
@@ -34,11 +35,11 @@ class AppRoute {
                 ),
               ),
               GoRoute(
-                path: '/congregations',
+                path: '/${ListCongregationPage.path}',
                 pageBuilder: (context, state) => _buildPageWithDefaultTransition<void>(
                   state: state,
                   context: context,
-                  child: Container(),
+                  child: ListCongregationPage(),
                 ),
               ),
               GoRoute(

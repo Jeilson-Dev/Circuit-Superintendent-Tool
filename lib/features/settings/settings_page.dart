@@ -1,8 +1,12 @@
+import 'package:circuit_superintendent_tool/components/dialog.dart';
+import 'package:circuit_superintendent_tool/components/navigation/app_nav.dart';
 import 'package:circuit_superintendent_tool/components/settings_menu_section_widget.dart';
 import 'package:circuit_superintendent_tool/components/theme_switcher.dart';
 import 'package:circuit_superintendent_tool/core/app_spacing.dart';
+import 'package:circuit_superintendent_tool/core/inject.dart';
 import 'package:circuit_superintendent_tool/core/localizations.dart';
 import 'package:circuit_superintendent_tool/features/settings/manage_congregations/manage_congregations_page.dart';
+import 'package:circuit_superintendent_tool/services/sqflite_service.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -23,23 +27,48 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
         body: Padding(
           padding: const EdgeInsets.only(top: AppSpacing.x8),
-          child: Column(children: [
-            const ThemeSwitcher(),
-            SectionSettingsMenuWidget(
-              title: 'Gerenciar Congregações',
-              legend: 'Criar, editar ou excluir congregações',
-              content: Row(
-                children: [
-                  TextButton(
-                    child: Text('Gerenciar Congregações'),
-                    onPressed: () {
-                      context.go('/${SettingsPage.path}/${ManageCongregationPage.path}');
-                    },
-                  ),
-                ],
+          child: SingleChildScrollView(
+            child: Column(children: [
+              const ThemeSwitcher(),
+              SectionSettingsMenuWidget(
+                title: 'Gerenciar Congregações',
+                legend: 'Criar, editar ou excluir congregações',
+                content: Row(
+                  children: [
+                    TextButton(
+                      child: Text('Gerenciar Congregações'),
+                      onPressed: () {
+                        context.go('/${SettingsPage.path}/${ManageCongregationPage.path}');
+                      },
+                    ),
+                  ],
+                ),
               ),
-            )
-          ]),
+              SectionSettingsMenuWidget(
+                title: 'Limpar base de dados',
+                legend: 'Apagar dados salvos no dispositivo',
+                content: Row(
+                  children: [
+                    TextButton(
+                      child: Text('Apagar base de dados'),
+                      onPressed: () => AppDialog(
+                        title: 'Deseja apagar base de dados?',
+                        confirmText: 'Apagar',
+                        cancelText: 'Cancelar',
+                        critAction: true,
+                        onConfirm: (ctx) async {
+                          await inject<SQFliteService>().clearDatabase();
+                          Navigator.of(ctx).pop();
+                        },
+                        onCancel: (ctx) => Navigator.of(ctx).pop(),
+                      ).showMyDialog(context),
+                    ),
+                  ],
+                ),
+              ),
+              AppNav.placeholder()
+            ]),
+          ),
         ));
   }
 }

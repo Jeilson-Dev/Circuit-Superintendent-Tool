@@ -19,13 +19,13 @@ class GroupDTO with _$GroupDTO {
     @Default(0) @JsonKey(name: 'not_baptized_publishers') int notBaptizedPublishers,
     @Default(0) @JsonKey(name: 'regular_pioneers') int regularPioneers,
     @Default(0) @JsonKey(name: 'auxiliary_pioneers') int auxiliaryPioneers,
-    @Default(0) @JsonKey(name: 'irregular_publishers') int irregularPublishers,
-    @Default([]) @JsonKey(name: 'potential_pioneer') List<String> potentialPioneer,
-    @Default([]) @JsonKey(name: 'potential_elder') List<String> potentialElder,
-    @Default([]) @JsonKey(name: 'potential_ministerial_servant') List<String> potentialMinisterialServant,
+    @Default([]) @JsonKey(name: 'irregular_publishers') List<String> irregularPublishers,
+    @Default([]) @JsonKey(name: 'potential_pioneers') List<String> potentialPioneers,
+    @Default([]) @JsonKey(name: 'potential_elders') List<String> potentialElders,
+    @Default([]) @JsonKey(name: 'potential_ministerial_servants') List<String> potentialMinisterialServants,
   }) = _GroupDTO;
 
-  int get totalPublishers => activePublishers + irregularPublishers;
+  int get totalPublishers => activePublishers + irregularPublishers.length;
 
   factory GroupDTO.fromJson(Map<String, dynamic> json) => _$GroupDTOFromJson(json);
   // factory GroupDTO.fixture() => const GroupDTO(id: 2, city: 'Serrinha', name: 'Central');

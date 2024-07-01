@@ -1,7 +1,9 @@
 import 'package:circuit_superintendent_tool/core/feature_toggles.dart';
 import 'package:circuit_superintendent_tool/core/firebase_options.dart';
 import 'package:circuit_superintendent_tool/core/logger.dart';
+import 'package:circuit_superintendent_tool/features/list_congregations/list_congregations_cubit.dart';
 import 'package:circuit_superintendent_tool/features/settings/manage_congregations/manage_congregations_cubit.dart';
+import 'package:circuit_superintendent_tool/features/visits/visits_cubit.dart';
 import 'package:circuit_superintendent_tool/services/force_update_service.dart';
 import 'package:circuit_superintendent_tool/services/sqflite_service.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -91,6 +93,10 @@ setupInjection() async {
   GetIt.I.registerLazySingleton<FirebaseRemoteConfig>(() => FirebaseRemoteConfig.instance);
 
   GetIt.I.registerLazySingleton<CongregationsCubit>(() => CongregationsCubit(inject<SQFliteService>()));
+
+  GetIt.I.registerLazySingleton<ListCongregationsCubit>(() => ListCongregationsCubit(inject<SQFliteService>()));
+
+  GetIt.I.registerLazySingleton<VisitsCubit>(() => VisitsCubit(inject<SQFliteService>()));
 
   GetIt.I.registerLazySingleton<ForceUpdateService>(() => ForceUpdateService(
         featureToggles: inject<FeatureToggles>(),
