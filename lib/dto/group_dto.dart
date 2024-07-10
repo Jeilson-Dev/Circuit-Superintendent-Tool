@@ -7,9 +7,9 @@ part 'group_dto.g.dart';
 class GroupDTO with _$GroupDTO {
   const GroupDTO._();
   const factory GroupDTO({
-    @Default(0) int id,
-    @Default(0) @JsonKey(name: 'congregation_id') int congregationId,
-    @Default(0) @JsonKey(name: 'visit_id') int visitId,
+    required String id,
+    @Default('') @JsonKey(name: 'congregation_id') String congregationId,
+    @Default('') @JsonKey(name: 'visit_id') String visitId,
     @Default('') String responsible,
     @Default(0) @JsonKey(name: 'group_number') int groupNumber,
     @Default(0) @JsonKey(name: 'studies') int studies,
@@ -28,5 +28,22 @@ class GroupDTO with _$GroupDTO {
   int get totalPublishers => activePublishers + irregularPublishers.length;
 
   factory GroupDTO.fromJson(Map<String, dynamic> json) => _$GroupDTOFromJson(json);
-  // factory GroupDTO.fixture() => const GroupDTO(id: 2, city: 'Serrinha', name: 'Central');
+  factory GroupDTO.fixture() => const GroupDTO(
+        id: '',
+        visitId: '3',
+        groupNumber: 2,
+        congregationId: '2',
+        activePublishers: 30,
+        auxiliaryPioneers: 5,
+        baptizedPublishers: 20,
+        irregularPublishers: ['John', 'James'],
+        regularPioneers: 6,
+        notBaptizedPublishers: 1,
+        potentialElders: ['Luke', 'Mathew'],
+        potentialMinisterialServants: ['Timothy', 'John S.'],
+        potentialPioneers: ['Paul', 'Arthur'],
+        publisherWithoutStudies: 0,
+        responsible: 'Peter S.',
+        studies: 10,
+      );
 }

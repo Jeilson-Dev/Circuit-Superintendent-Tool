@@ -9,7 +9,7 @@ part of 'congregation_dto.dart';
 _$CongregationDTOImpl _$$CongregationDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$CongregationDTOImpl(
-      id: (json['id'] as num?)?.toInt() ?? 0,
+      id: json['id'] as String,
       name: json['name'] as String? ?? '',
       city: json['city'] as String? ?? '',
       lastVisit: json['lastVisit'] == null

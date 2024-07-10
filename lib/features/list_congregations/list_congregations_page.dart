@@ -1,13 +1,7 @@
-import 'package:circuit_superintendent_tool/components/congregation_card_widget.dart';
-import 'package:circuit_superintendent_tool/components/empty_screen.dart';
-import 'package:circuit_superintendent_tool/components/navigation/app_nav.dart';
-import 'package:circuit_superintendent_tool/core/app_spacing.dart';
-import 'package:circuit_superintendent_tool/core/inject.dart';
-import 'package:circuit_superintendent_tool/core/localizations.dart';
+import 'package:circuit_superintendent_tool/core/core.dart';
 import 'package:circuit_superintendent_tool/features/list_congregations/list_congregations_cubit.dart';
 import 'package:circuit_superintendent_tool/features/list_congregations/list_congregations_state.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:circuit_superintendent_tool/features/visits/visits_page.dart';
 
 class ListCongregationPage extends StatefulWidget {
   const ListCongregationPage({super.key});
@@ -22,9 +16,8 @@ class _ListCongregationPageState extends State<ListCongregationPage> {
 
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) => listCongregationCubit.loadCongregations());
-
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => listCongregationCubit.loadCongregations());
   }
 
   @override
@@ -42,13 +35,11 @@ class _ListCongregationPageState extends State<ListCongregationPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const SizedBox(height: AppSpacing.x24),
-                      ...List.generate(
-                        congregations.length,
-                        (index) => CongregationCardWidget(
-                          key: Key(congregations[index].id.toString()),
-                          congregation: congregations[index],
-                        ),
-                      ),
+                      ...congregations.map((congregation) => CongregationCardWidget(
+                            key: Key(congregation.id.toString()),
+                            congregation: congregation,
+                            onEdit: () => VisitsPage.navigate(context, congregationId: congregation.id),
+                          )),
                       AppNav.placeholder()
                     ],
                   ),

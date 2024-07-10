@@ -1,13 +1,10 @@
 import 'dart:ui';
 
-import 'package:circuit_superintendent_tool/core/app_spacing.dart';
+import 'package:circuit_superintendent_tool/core/core.dart';
 import 'package:circuit_superintendent_tool/core/feature_toggles.dart';
-import 'package:circuit_superintendent_tool/core/inject.dart';
-import 'package:circuit_superintendent_tool/core/localizations.dart';
 import 'package:circuit_superintendent_tool/features/list_congregations/list_congregations_page.dart';
 import 'package:circuit_superintendent_tool/features/settings/settings_page.dart';
 import 'package:circuit_superintendent_tool/features/visits/visits_page.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class AppNav extends StatefulWidget {
@@ -28,6 +25,7 @@ class _AppNavState extends State<AppNav> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         top: false,
         child: Stack(
@@ -38,7 +36,7 @@ class _AppNavState extends State<AppNav> {
                 _NavItem(
                   label: AppLocalizations.of(context)!.appNavigationBarHome,
                   icon: Icons.home,
-                  route: '/home',
+                  route: '/',
                   currentPath: currentPath,
                 ),
               if (features.menuItemVisits)

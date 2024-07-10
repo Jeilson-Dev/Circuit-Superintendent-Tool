@@ -1,17 +1,7 @@
-import 'package:circuit_superintendent_tool/components/congregation_card_widget.dart';
-import 'package:circuit_superintendent_tool/components/empty_screen.dart';
-import 'package:circuit_superintendent_tool/components/input_form_widget.dart';
-import 'package:circuit_superintendent_tool/components/navigation/app_nav.dart';
-import 'package:circuit_superintendent_tool/core/app_spacing.dart';
-import 'package:circuit_superintendent_tool/core/inject.dart';
-import 'package:circuit_superintendent_tool/core/localizations.dart';
-import 'package:circuit_superintendent_tool/core/theme/app_colors.dart';
-import 'package:circuit_superintendent_tool/core/theme/app_text_theme.dart';
+import 'package:circuit_superintendent_tool/core/core.dart';
 import 'package:circuit_superintendent_tool/dto/congregation_dto.dart';
 import 'package:circuit_superintendent_tool/features/settings/manage_congregations/manage_congregations_cubit.dart';
 import 'package:circuit_superintendent_tool/features/settings/manage_congregations/manage_congregations_state.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ManageCongregationPage extends StatefulWidget {
   const ManageCongregationPage({super.key});
@@ -76,46 +66,53 @@ class _ManageCongregationPageState extends State<ManageCongregationPage> {
     final bool isCreating = congregation == null;
     return showDialog<void>(
       context: context,
-      barrierDismissible: false, // user must tap button!
+      barrierDismissible: false,
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(isCreating ? AppLocalizations.of(context)!.congregationPageAddCongregation : AppLocalizations.of(context)!.congregationPageEditCongregation),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: [
-                InputFormWidget(hintText: AppLocalizations.of(context)!.congregationPageAddEditCongregationHintCongregation, controller: nameController),
-                InputFormWidget(hintText: AppLocalizations.of(context)!.congregationPageAddEditCongregationHintCity, controller: cityController),
-              ],
-            ),
+        return AppDialog(
+          title: isCreating ? AppLocalizations.of(context)!.congregationPageAddCongregation : AppLocalizations.of(context)!.congregationPageEditCongregation,
+          content: Column(
+            children: [
+              InputFormWidget(
+                controller: nameController,
+                backgroundColor: AppColors.white,
+                hintText: AppLocalizations.of(context)!.congregationPageAddEditCongregationHintCongregation,
+              ),
+              InputFormWidget(
+                backgroundColor: AppColors.white,
+                controller: cityController,
+                hintText: AppLocalizations.of(context)!.congregationPageAddEditCongregationHintCity,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.x24),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(
+                      child: Text(
+                        AppLocalizations.of(context)!.congregationPageAddEditCongregationCancel,
+                        style: AppTextTheme.bodyLarge.copyWith(color: AppColors.error400),
+                      ),
+                      onPressed: () => Navigator.of(context).pop(),
+                    ),
+                    TextButton(
+                      child: Text(
+                        AppLocalizations.of(context)!.congregationPageAddEditCongregationSave,
+                        style: AppTextTheme.bodyLarge.copyWith(color: AppColors.primary600),
+                      ),
+                      onPressed: () async {
+                        if (isCreating) {
+                          await congregationCubit.createCongregation(name: nameController.text.trim(), city: cityController.text.trim());
+                        } else {
+                          await congregationCubit.updateCongregation(congregation: congregation.copyWith(name: nameController.text, city: cityController.text));
+                        }
+                        if (context.mounted) Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                ),
+              )
+            ],
           ),
-          actions: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                TextButton(
-                  child: Text(
-                    AppLocalizations.of(context)!.congregationPageAddEditCongregationCancel,
-                    style: AppTextTheme.bodyLarge.copyWith(color: AppColors.error400),
-                  ),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
-                TextButton(
-                  child: Text(
-                    AppLocalizations.of(context)!.congregationPageAddEditCongregationSave,
-                    style: AppTextTheme.bodyLarge.copyWith(color: AppColors.primary600),
-                  ),
-                  onPressed: () async {
-                    if (isCreating) {
-                      await congregationCubit.createCongregation(name: nameController.text.trim(), city: cityController.text.trim());
-                    } else {
-                      await congregationCubit.updateCongregation(id: congregation.id, name: nameController.text.trim(), city: cityController.text.trim());
-                    }
-                    if (context.mounted) Navigator.of(context).pop();
-                  },
-                ),
-              ],
-            )
-          ],
         );
       },
     );

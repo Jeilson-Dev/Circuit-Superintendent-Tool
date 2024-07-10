@@ -14,6 +14,7 @@ class AppTheme {
               textColor: AppColors.primary950,
               backgroundColor: AppColors.primary200,
               shadowColor: AppColors.gray400,
+              inputBorderColor: AppColors.gray400,
             ),
           ]);
 
@@ -28,6 +29,7 @@ class AppTheme {
               textColor: AppColors.primary100,
               backgroundColor: AppColors.primary600.withOpacity(0.5),
               shadowColor: Colors.transparent,
+              inputBorderColor: AppColors.gray400,
             ),
           ]);
 
@@ -62,22 +64,26 @@ class AppCardTheme extends ThemeExtension<AppCardTheme> {
     required this.backgroundColor,
     required this.shadowColor,
     required this.textColor,
+    required this.inputBorderColor,
   });
 
   final Color backgroundColor;
   final Color shadowColor;
   final Color textColor;
+  final Color inputBorderColor;
 
   @override
   ThemeExtension<AppCardTheme> copyWith({
     Color? backgroundColor,
     Color? shadowColor,
     Color? textColor,
+    Color? inputBorderColor,
   }) {
     return AppCardTheme(
       backgroundColor: backgroundColor ?? this.backgroundColor,
       shadowColor: shadowColor ?? this.shadowColor,
       textColor: textColor ?? this.textColor,
+      inputBorderColor: inputBorderColor ?? this.inputBorderColor,
     );
   }
 
@@ -91,6 +97,7 @@ class AppCardTheme extends ThemeExtension<AppCardTheme> {
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t)!,
       shadowColor: Color.lerp(shadowColor, other.shadowColor, t)!,
       textColor: Color.lerp(textColor, other.textColor, t)!,
+      inputBorderColor: Color.lerp(inputBorderColor, other.inputBorderColor, t)!,
     );
   }
 }

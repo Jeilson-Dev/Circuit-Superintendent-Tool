@@ -1,39 +1,19 @@
-import 'package:circuit_superintendent_tool/components/badges/privilege_badge_widget.dart';
-import 'package:circuit_superintendent_tool/core/app_spacing.dart';
-import 'package:circuit_superintendent_tool/core/theme/app_text_theme.dart';
-import 'package:circuit_superintendent_tool/core/theme/app_theme.dart';
-import 'package:flutter/material.dart';
+import 'package:circuit_superintendent_tool/core/core.dart';
+import 'package:circuit_superintendent_tool/dto/congregation_dto.dart';
+import 'package:circuit_superintendent_tool/dto/visit_dto.dart';
 
 class VisitCardWidget extends StatelessWidget {
-  final String congregationName;
-  final String congregationCity;
-  final String lastVisit;
-  final String nextVisit;
-  final int attendingMeetingsWeekends;
-  final int attendingMeetingsWeekDay;
-  final int elders;
-  final int servants;
-  final int pioneers;
+  final VisitDTO visit;
+  final CongregationDTO congregation;
 
-  const VisitCardWidget({
-    super.key,
-    required this.congregationName,
-    required this.congregationCity,
-    required this.lastVisit,
-    required this.nextVisit,
-    required this.attendingMeetingsWeekends,
-    required this.attendingMeetingsWeekDay,
-    required this.elders,
-    required this.servants,
-    required this.pioneers,
-  });
+  const VisitCardWidget({super.key, required this.visit, required this.congregation});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<AppCardTheme>()!;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.x24, vertical: AppSpacing.x12),
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.x8, vertical: AppSpacing.x12),
       child: Container(
         decoration: BoxDecoration(
             color: theme.backgroundColor,
@@ -43,27 +23,38 @@ class VisitCardWidget extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(AppSpacing.x16),
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text('$congregationName - $congregationCity', style: AppTextTheme.titleLarge.copyWith(color: theme.textColor)),
+            Text('${congregation.name} - ${congregation.city}', style: AppTextTheme.titleLarge.copyWith(color: theme.textColor)),
             AppSpacing.spacingX4,
-            Text('Última visita: $lastVisit', style: AppTextTheme.bodySmall.copyWith(color: theme.textColor)),
+            Text(AppLocalizations.of(context)!.visitCardWidgetLastVisit(visit.lastVisit), style: AppTextTheme.bodySmall.copyWith(color: theme.textColor)),
             AppSpacing.spacingX4,
-            Text('Assistência às Reuniões:', style: AppTextTheme.labelLarge.copyWith(color: theme.textColor)),
+            Text(AppLocalizations.of(context)!.visitCardWidgetMeetingsAttendance, style: AppTextTheme.labelLarge.copyWith(color: theme.textColor)),
             AppSpacing.spacingX4,
-            Text('Meio de semana - $attendingMeetingsWeekDay', style: AppTextTheme.bodySmall.copyWith(color: theme.textColor)),
+            Text(
+              AppLocalizations.of(context)!.visitCardWidgetMeedWeekAttendance(visit.midWeekAssistance.toString()),
+              style: AppTextTheme.bodySmall.copyWith(color: theme.textColor),
+            ),
             AppSpacing.spacingX4,
-            Text('Final de semana - $attendingMeetingsWeekends', style: AppTextTheme.bodySmall.copyWith(color: theme.textColor)),
+            Text(
+              AppLocalizations.of(context)!.visitCardWidgetWeekendAttendance(visit.weekendAssistance.toString()),
+              style: AppTextTheme.bodySmall.copyWith(color: theme.textColor),
+            ),
+            AppSpacing.spacingX4,
+            Text(
+              AppLocalizations.of(context)!.visitCardWidgetPublishers(visit.publishersOnCongregation.toString()),
+              style: AppTextTheme.bodySmall.copyWith(color: theme.textColor),
+            ),
             AppSpacing.spacingX12,
             Row(
               children: [
-                PrivilegeBadgeWidget.elder(context, amount: elders),
+                PrivilegeBadgeWidget.elder(context, amount: 0),
                 AppSpacing.spacingX12,
-                PrivilegeBadgeWidget.servant(context, amount: servants),
+                PrivilegeBadgeWidget.servant(context, amount: 0),
                 AppSpacing.spacingX12,
-                PrivilegeBadgeWidget.pioneer(context, amount: pioneers),
+                PrivilegeBadgeWidget.pioneer(context, amount: 0),
               ],
             ),
-            AppSpacing.spacingX12,
-            Text('Próxima visita: $nextVisit', style: AppTextTheme.bodySmall.copyWith(color: theme.textColor)),
+            // AppSpacing.spacingX12,
+            // Text('Próxima visita: $', style: AppTextTheme.bodySmall.copyWith(color: theme.textColor)),
           ]),
         ),
       ),

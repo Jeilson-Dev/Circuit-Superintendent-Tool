@@ -1,9 +1,5 @@
-import 'package:circuit_superintendent_tool/core/app_spacing.dart';
-import 'package:circuit_superintendent_tool/core/localizations.dart';
-import 'package:circuit_superintendent_tool/gen/assets.gen.dart';
+import 'package:circuit_superintendent_tool/core/core.dart';
 import 'package:circuit_superintendent_tool/services/force_update_service.dart';
-import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 class ForceUpdateWidget extends StatefulWidget {
   const ForceUpdateWidget({super.key, required this.forceUpdateService});

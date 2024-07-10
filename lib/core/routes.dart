@@ -1,10 +1,9 @@
-import 'package:circuit_superintendent_tool/components/navigation/app_nav.dart';
+import 'package:circuit_superintendent_tool/core/core.dart';
+import 'package:circuit_superintendent_tool/features/create_visit/create_visit_page.dart';
 import 'package:circuit_superintendent_tool/features/list_congregations/list_congregations_page.dart';
 import 'package:circuit_superintendent_tool/features/settings/manage_congregations/manage_congregations_page.dart';
 import 'package:circuit_superintendent_tool/features/settings/settings_page.dart';
 import 'package:circuit_superintendent_tool/features/visits/visits_page.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class AppRoute {
   static router(String initialRoute) => GoRouter(
@@ -19,7 +18,7 @@ class AppRoute {
             ),
             routes: [
               GoRoute(
-                path: '/home',
+                path: '/',
                 pageBuilder: (context, state) => _buildPageWithDefaultTransition<void>(
                   state: state,
                   context: context,
@@ -27,21 +26,44 @@ class AppRoute {
                 ),
               ),
               GoRoute(
-                path: '/${VisitsPage.path}',
-                pageBuilder: (context, state) => _buildPageWithDefaultTransition<void>(
-                  state: state,
-                  context: context,
-                  child: const VisitsPage(),
-                ),
-              ),
+                  path: '/${VisitsPage.path}',
+                  pageBuilder: (context, state) => _buildPageWithDefaultTransition<void>(
+                        state: state,
+                        context: context,
+                        child: const VisitsPage(),
+                      ),
+                  routes: [
+                    GoRoute(
+                        path: '${CreateVisitPage.path}/:congregationId',
+                        pageBuilder: (context, state) {
+                          final congregationId = state.pathParameters['congregationId']!;
+                          return _buildPageWithDefaultTransition<void>(
+                            state: state,
+                            context: context,
+                            child: CreateVisitPage(congregationId: congregationId),
+                          );
+                        }),
+                  ]),
               GoRoute(
-                path: '/${ListCongregationPage.path}',
-                pageBuilder: (context, state) => _buildPageWithDefaultTransition<void>(
-                  state: state,
-                  context: context,
-                  child: ListCongregationPage(),
-                ),
-              ),
+                  path: '/${ListCongregationPage.path}',
+                  pageBuilder: (context, state) => _buildPageWithDefaultTransition<void>(
+                        state: state,
+                        context: context,
+                        child: ListCongregationPage(),
+                      ),
+                  routes: [
+                    GoRoute(
+                      path: '${VisitsPage.path}/:congregationId',
+                      pageBuilder: (context, state) {
+                        final congregationId = state.pathParameters['congregationId']!;
+                        return _buildPageWithDefaultTransition<void>(
+                          state: state,
+                          context: context,
+                          child: VisitsPage(congregationId: congregationId),
+                        );
+                      },
+                    ),
+                  ]),
               GoRoute(
                   path: '/${SettingsPage.path}',
                   pageBuilder: (context, state) => _buildPageWithDefaultTransition<void>(

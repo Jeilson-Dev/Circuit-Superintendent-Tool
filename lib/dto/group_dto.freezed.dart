@@ -20,11 +20,11 @@ GroupDTO _$GroupDTOFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GroupDTO {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'congregation_id')
-  int get congregationId => throw _privateConstructorUsedError;
+  String get congregationId => throw _privateConstructorUsedError;
   @JsonKey(name: 'visit_id')
-  int get visitId => throw _privateConstructorUsedError;
+  String get visitId => throw _privateConstructorUsedError;
   String get responsible => throw _privateConstructorUsedError;
   @JsonKey(name: 'group_number')
   int get groupNumber => throw _privateConstructorUsedError;
@@ -64,9 +64,9 @@ abstract class $GroupDTOCopyWith<$Res> {
       _$GroupDTOCopyWithImpl<$Res, GroupDTO>;
   @useResult
   $Res call(
-      {int id,
-      @JsonKey(name: 'congregation_id') int congregationId,
-      @JsonKey(name: 'visit_id') int visitId,
+      {String id,
+      @JsonKey(name: 'congregation_id') String congregationId,
+      @JsonKey(name: 'visit_id') String visitId,
       String responsible,
       @JsonKey(name: 'group_number') int groupNumber,
       @JsonKey(name: 'studies') int studies,
@@ -117,15 +117,15 @@ class _$GroupDTOCopyWithImpl<$Res, $Val extends GroupDTO>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       congregationId: null == congregationId
           ? _value.congregationId
           : congregationId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       visitId: null == visitId
           ? _value.visitId
           : visitId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       responsible: null == responsible
           ? _value.responsible
           : responsible // ignore: cast_nullable_to_non_nullable
@@ -191,9 +191,9 @@ abstract class _$$GroupDTOImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
-      @JsonKey(name: 'congregation_id') int congregationId,
-      @JsonKey(name: 'visit_id') int visitId,
+      {String id,
+      @JsonKey(name: 'congregation_id') String congregationId,
+      @JsonKey(name: 'visit_id') String visitId,
       String responsible,
       @JsonKey(name: 'group_number') int groupNumber,
       @JsonKey(name: 'studies') int studies,
@@ -242,15 +242,15 @@ class __$$GroupDTOImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       congregationId: null == congregationId
           ? _value.congregationId
           : congregationId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       visitId: null == visitId
           ? _value.visitId
           : visitId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       responsible: null == responsible
           ? _value.responsible
           : responsible // ignore: cast_nullable_to_non_nullable
@@ -311,9 +311,9 @@ class __$$GroupDTOImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$GroupDTOImpl extends _GroupDTO {
   const _$GroupDTOImpl(
-      {this.id = 0,
-      @JsonKey(name: 'congregation_id') this.congregationId = 0,
-      @JsonKey(name: 'visit_id') this.visitId = 0,
+      {required this.id,
+      @JsonKey(name: 'congregation_id') this.congregationId = '',
+      @JsonKey(name: 'visit_id') this.visitId = '',
       this.responsible = '',
       @JsonKey(name: 'group_number') this.groupNumber = 0,
       @JsonKey(name: 'studies') this.studies = 0,
@@ -342,14 +342,13 @@ class _$GroupDTOImpl extends _GroupDTO {
       _$$GroupDTOImplFromJson(json);
 
   @override
-  @JsonKey()
-  final int id;
+  final String id;
   @override
   @JsonKey(name: 'congregation_id')
-  final int congregationId;
+  final String congregationId;
   @override
   @JsonKey(name: 'visit_id')
-  final int visitId;
+  final String visitId;
   @override
   @JsonKey()
   final String responsible;
@@ -496,9 +495,9 @@ class _$GroupDTOImpl extends _GroupDTO {
 
 abstract class _GroupDTO extends GroupDTO {
   const factory _GroupDTO(
-      {final int id,
-      @JsonKey(name: 'congregation_id') final int congregationId,
-      @JsonKey(name: 'visit_id') final int visitId,
+      {required final String id,
+      @JsonKey(name: 'congregation_id') final String congregationId,
+      @JsonKey(name: 'visit_id') final String visitId,
       final String responsible,
       @JsonKey(name: 'group_number') final int groupNumber,
       @JsonKey(name: 'studies') final int studies,
@@ -521,13 +520,13 @@ abstract class _GroupDTO extends GroupDTO {
       _$GroupDTOImpl.fromJson;
 
   @override
-  int get id;
+  String get id;
   @override
   @JsonKey(name: 'congregation_id')
-  int get congregationId;
+  String get congregationId;
   @override
   @JsonKey(name: 'visit_id')
-  int get visitId;
+  String get visitId;
   @override
   String get responsible;
   @override

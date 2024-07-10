@@ -8,9 +8,9 @@ part of 'group_dto.dart';
 
 _$GroupDTOImpl _$$GroupDTOImplFromJson(Map<String, dynamic> json) =>
     _$GroupDTOImpl(
-      id: (json['id'] as num?)?.toInt() ?? 0,
-      congregationId: (json['congregation_id'] as num?)?.toInt() ?? 0,
-      visitId: (json['visit_id'] as num?)?.toInt() ?? 0,
+      id: json['id'] as String,
+      congregationId: json['congregation_id'] as String? ?? '',
+      visitId: json['visit_id'] as String? ?? '',
       responsible: json['responsible'] as String? ?? '',
       groupNumber: (json['group_number'] as num?)?.toInt() ?? 0,
       studies: (json['studies'] as num?)?.toInt() ?? 0,

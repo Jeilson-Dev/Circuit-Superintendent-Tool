@@ -20,7 +20,7 @@ CongregationDTO _$CongregationDTOFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CongregationDTO {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
   VisitDTO? get lastVisit => throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $CongregationDTOCopyWith<$Res> {
           CongregationDTO value, $Res Function(CongregationDTO) then) =
       _$CongregationDTOCopyWithImpl<$Res, CongregationDTO>;
   @useResult
-  $Res call({int id, String name, String city, VisitDTO? lastVisit});
+  $Res call({String id, String name, String city, VisitDTO? lastVisit});
 
   $VisitDTOCopyWith<$Res>? get lastVisit;
 }
@@ -64,7 +64,7 @@ class _$CongregationDTOCopyWithImpl<$Res, $Val extends CongregationDTO>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -101,7 +101,7 @@ abstract class _$$CongregationDTOImplCopyWith<$Res>
       __$$CongregationDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, String city, VisitDTO? lastVisit});
+  $Res call({String id, String name, String city, VisitDTO? lastVisit});
 
   @override
   $VisitDTOCopyWith<$Res>? get lastVisit;
@@ -127,7 +127,7 @@ class __$$CongregationDTOImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -148,14 +148,13 @@ class __$$CongregationDTOImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CongregationDTOImpl implements _CongregationDTO {
   const _$CongregationDTOImpl(
-      {this.id = 0, this.name = '', this.city = '', this.lastVisit});
+      {required this.id, this.name = '', this.city = '', this.lastVisit});
 
   factory _$CongregationDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$CongregationDTOImplFromJson(json);
 
   @override
-  @JsonKey()
-  final int id;
+  final String id;
   @override
   @JsonKey()
   final String name;
@@ -203,7 +202,7 @@ class _$CongregationDTOImpl implements _CongregationDTO {
 
 abstract class _CongregationDTO implements CongregationDTO {
   const factory _CongregationDTO(
-      {final int id,
+      {required final String id,
       final String name,
       final String city,
       final VisitDTO? lastVisit}) = _$CongregationDTOImpl;
@@ -212,7 +211,7 @@ abstract class _CongregationDTO implements CongregationDTO {
       _$CongregationDTOImpl.fromJson;
 
   @override
-  int get id;
+  String get id;
   @override
   String get name;
   @override

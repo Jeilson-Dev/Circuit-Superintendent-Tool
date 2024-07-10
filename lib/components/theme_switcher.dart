@@ -1,7 +1,7 @@
 import 'package:circuit_superintendent_tool/components/settings_menu_section_widget.dart';
 import 'package:circuit_superintendent_tool/components/theme_controller_widget.dart';
 import 'package:circuit_superintendent_tool/core/app_spacing.dart';
-import 'package:circuit_superintendent_tool/core/localizations.dart';
+import 'package:circuit_superintendent_tool/core/core.dart';
 import 'package:circuit_superintendent_tool/core/theme/app_text_theme.dart';
 import 'package:flutter/material.dart';
 

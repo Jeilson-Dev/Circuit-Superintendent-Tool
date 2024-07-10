@@ -7,12 +7,12 @@ part 'congregation_dto.g.dart';
 @freezed
 class CongregationDTO with _$CongregationDTO {
   const factory CongregationDTO({
-    @Default(0) int id,
+    required String id,
     @Default('') String name,
     @Default('') String city,
     VisitDTO? lastVisit,
   }) = _CongregationDTO;
 
   factory CongregationDTO.fromJson(Map<String, dynamic> json) => _$CongregationDTOFromJson(json);
-  factory CongregationDTO.fixture() => const CongregationDTO(id: 2, city: 'Serrinha', name: 'Central', lastVisit: null);
+  factory CongregationDTO.fixture() => const CongregationDTO(id: '', city: 'Serrinha', name: 'Central', lastVisit: null);
 }

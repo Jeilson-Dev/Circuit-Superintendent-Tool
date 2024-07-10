@@ -22,6 +22,19 @@
   "congregationPageEmpty": "Nenhuma congregação foi cadastrada ainda",
   "congregationPageError": "Encontramos um problema ao tentar processar sua solicitação",
   "congregationPageTitle": "Congregações",
+  "createVisitPageAddNewGroup": "Adicionar Grupo",
+  "createVisitPageCancel": "Cancelar",
+  "createVisitPageCongregationTitle": "Congregação:",
+  "createVisitPageDisassociatedPublishersHint": "Desassociados",
+  "createVisitPageDisassociatedPublishersLabel": "Desassociados:",
+  "createVisitPageGroups": "Grupos:",
+  "createVisitPageInactivePublishersHint": "Inativos",
+  "createVisitPageInactivePublishersLabel": "Inativos:",
+  "createVisitPageSave": "Salvar",
+  "createVisitPageWeekAttendanceHint": "Assistência meio de semana",
+  "createVisitPageWeekAttendanceLabel": "Assistência meio de semana:",
+  "createVisitPageWeekendAttendanceHint": "Assistência final de semana",
+  "createVisitPageWeekendAttendanceLabel": "Assistência final de semana:",
   "forceUpdateWidgetCurrentVersion": "Versão atual: {amount}",
   "@forceUpdateWidgetCurrentVersion": {
     "placeholders": {
@@ -40,6 +53,47 @@
   },
   "forceUpdateWidgetNewVersionAvailable": "Nova Versão disponível",
   "forceUpdateWidgetUpdate": "Atualizar",
+  "groupFormWidgetDeleteConfirmRemoveThisGroup": "Deseja remover este grupo?",
+  "groupFormWidgetDeleteGroupNo": "Não",
+  "groupFormWidgetDeleteGroupYes": "Sim",
+  "groupFormWidgetFormActivePublishersHint": "Publicadores Ativos",
+  "groupFormWidgetFormActivePublishersLabel": "Publicadores Ativos:",
+  "groupFormWidgetFormAuxiliaryPioneerHint": "Pioneiros Auxiliares",
+  "groupFormWidgetFormAuxiliaryPioneerLabel": "Pioneiros Auxiliares:",
+  "groupFormWidgetFormBaptizedPublishersHint": "Publicadores Batizados",
+  "groupFormWidgetFormBaptizedPublishersLabel": "Publicadores Batizados:",
+  "groupFormWidgetFormGroup": "Grupo {number} - {responsible}",
+  "@groupFormWidgetFormGroup": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      },
+      "responsible": {
+        "type": "String"
+      }
+    }
+  },
+  "groupFormWidgetFormGroupNumberHint": "Número do Grupo",
+  "groupFormWidgetFormGroupNumberLabel": "Número do Grupo:",
+  "groupFormWidgetFormIrregularPublishersHint": "Publicadores Irregulares",
+  "groupFormWidgetFormIrregularPublishersLabel": "Publicadores Irregulares:",
+  "groupFormWidgetFormNotBaptizedPublishersHint": "Publicadores não Batizados",
+  "groupFormWidgetFormNotBaptizedPublishersLabel": "Publicadores não Batizados:",
+  "groupFormWidgetFormPotentialEldersHint": "Anciãos em potencial",
+  "groupFormWidgetFormPotentialEldersLabel": "Anciãos em potencial:",
+  "groupFormWidgetFormPotentialMinisterialServantHint": "Servos Ministeriais em potencial",
+  "groupFormWidgetFormPotentialMinisterialServantLabel": "Servos Ministeriais em potencial:",
+  "groupFormWidgetFormPotentialPioneersHint": "Pioneiros Regulares em potencial",
+  "groupFormWidgetFormPotentialPioneersLabel": "Pioneiros Regulares em potencial:",
+  "groupFormWidgetFormPublishersWithoutStudiesHint": "Sem Relatar Estudos",
+  "groupFormWidgetFormPublishersWithoutStudiesLabel": "Sem Relatar Estudos:",
+  "groupFormWidgetFormRegularPioneerHint": "Pioneiros Regulares",
+  "groupFormWidgetFormRegularPioneerLabel": "Pioneiros Regulares:",
+  "groupFormWidgetFormRemoveGroup": "Remover Grupo",
+  "groupFormWidgetFormResponsibleHint": "Responsável",
+  "groupFormWidgetFormResponsibleLabel": "Responsável:",
+  "groupFormWidgetFormStudiesHint": "Estudos",
+  "groupFormWidgetFormStudiesLabel": "Estudos:",
   "privilegeBadgeElderAbbreviation": "AC - {amount}",
   "@privilegeBadgeElderAbbreviation": {
     "placeholders": {
@@ -64,11 +118,58 @@
       }
     }
   },
+  "settingsPageDataBaseManagementButton": "Apagar base de dados",
+  "settingsPageDataBaseManagementClearDatabaseCancel": "Não",
+  "settingsPageDataBaseManagementClearDatabaseConfirm": "Sim",
+  "settingsPageDataBaseManagementClearDatabaseTitle": "Deseja apagar base de dados?",
+  "settingsPageDataBaseManagementLegend": "Apagar dados salvos no dispositivo",
+  "settingsPageDataBaseManagementTitle": "Limpar base de dados",
+  "settingsPageManageCongregationsButton": "Gerenciar Congregações",
+  "settingsPageManageCongregationsLegend": "Criar, editar ou excluir congregações",
+  "settingsPageManageCongregationsTitle": "Gerenciar Congregações",
   "settingsPageTitle": "Configurações",
   "settingsPageTitleThemeSelector": "Esquema de cores",
   "settingsPageTitleThemeSelectorAuto": "Auto",
   "settingsPageTitleThemeSelectorDark": "Escuro",
   "settingsPageTitleThemeSelectorLight": "Claro",
+  "visitCardWidgetLastVisit": "Última visita: {amount}",
+  "@visitCardWidgetLastVisit": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "visitCardWidgetMeedWeekAttendance": "Meio de semana - {amount}",
+  "@visitCardWidgetMeedWeekAttendance": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "visitCardWidgetMeetingsAttendance": "Assistência às Reuniões:",
+  "visitCardWidgetPublishers": "Publicadores: {amount}",
+  "@visitCardWidgetPublishers": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "visitCardWidgetWeekendAttendance": "Final de semana - {amount}",
+  "@visitCardWidgetWeekendAttendance": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "visitsPageAddEditCongregationCancel": "Cancelar",
+  "visitsPageAddEditCongregationDropdownCongregationHint": "Congregação",
+  "visitsPageAddEditCongregationDropdownCongregationLabel": "Congregação:",
+  "visitsPageAddEditCongregationNewVisitTitle": "Nova Visita",
+  "visitsPageAddEditCongregationSave": "Criar",
   "visitsPageEmpty": "Nenhuma visita foi encontrada",
   "visitsPageError": "Houve um erro ao carregar o registro de visitas",
   "visitsPageTitle": "Visitas"

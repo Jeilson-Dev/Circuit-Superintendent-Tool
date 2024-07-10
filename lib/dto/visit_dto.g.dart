@@ -8,11 +8,11 @@ part of 'visit_dto.dart';
 
 _$VisitDTOImpl _$$VisitDTOImplFromJson(Map<String, dynamic> json) =>
     _$VisitDTOImpl(
-      id: (json['id'] as num?)?.toInt() ?? 0,
+      id: json['id'] as String,
       previousVisit: json['previousVisit'] == null
           ? null
           : VisitDTO.fromJson(json['previousVisit'] as Map<String, dynamic>),
-      congregationId: (json['congregation_id'] as num?)?.toInt() ?? 0,
+      congregationId: json['congregation_id'] as String? ?? '',
       visitDate: json['visit_date'] as String? ?? '',
       midWeekAssistance: (json['mid_week_assistance'] as num?)?.toInt() ?? 0,
       weekendAssistance: (json['weekend_assistance'] as num?)?.toInt() ?? 0,

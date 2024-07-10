@@ -31,5 +31,11 @@ class FeatureToggles {
     );
   }
 
-  factory FeatureToggles.empty() => FeatureToggles(forceUpdate: false, menuItemCongregations: false, menuItemHome: false, menuItemSettings: false, menuItemVisits: false);
+  factory FeatureToggles.empty() => FeatureToggles(
+        forceUpdate: false,
+        menuItemCongregations: false,
+        menuItemHome: false,
+        menuItemSettings: false,
+        menuItemVisits: false,
+      );
 }

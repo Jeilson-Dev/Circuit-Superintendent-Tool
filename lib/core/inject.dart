@@ -1,19 +1,28 @@
+import 'package:circuit_superintendent_tool/core/core.dart';
 import 'package:circuit_superintendent_tool/core/feature_toggles.dart';
 import 'package:circuit_superintendent_tool/core/firebase_options.dart';
-import 'package:circuit_superintendent_tool/core/logger.dart';
+import 'package:circuit_superintendent_tool/dto/hive_adapters/app_settings.dart';
+import 'package:circuit_superintendent_tool/dto/hive_adapters/congregation.dart';
+import 'package:circuit_superintendent_tool/dto/hive_adapters/group.dart';
+import 'package:circuit_superintendent_tool/dto/hive_adapters/visit.dart';
+import 'package:circuit_superintendent_tool/features/create_visit/create_visit_cubit.dart';
 import 'package:circuit_superintendent_tool/features/list_congregations/list_congregations_cubit.dart';
 import 'package:circuit_superintendent_tool/features/settings/manage_congregations/manage_congregations_cubit.dart';
 import 'package:circuit_superintendent_tool/features/visits/visits_cubit.dart';
+import 'package:circuit_superintendent_tool/repository/repository.dart';
 import 'package:circuit_superintendent_tool/services/force_update_service.dart';
-import 'package:circuit_superintendent_tool/services/sqflite_service.dart';
+import 'package:circuit_superintendent_tool/services/hive_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flagsmith/flagsmith.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hive/hive.dart';
 import 'package:package_info/package_info.dart';
 
 final inject = GetIt.I;
+
+String sentryDNS = '';
 
 setupInjection() async {
   await inject.reset();
@@ -52,6 +61,8 @@ setupInjection() async {
     iosBundleIdIos = dotenv.env['IOS_BUNDLE_ID_IOS']!;
 
     flagsmithClientApiKeyDev = dotenv.env['FLAGSMITH_CLIENT_API_KEY_DEV']!;
+
+    sentryDNS = dotenv.env['SENTRY_DSN']!;
   } catch (exception) {
     Logger.e(message: 'Fail to load environment keys, from file: "$fileName"', exception: exception);
   }
@@ -76,6 +87,22 @@ setupInjection() async {
 
   await FirebaseRemoteConfig.instance.fetchAndActivate();
 
+  final hiveService = await HiveService.init();
+
+  GetIt.I.registerLazySingleton<HiveService>(() => hiveService);
+
+  final congregationBox = await Hive.openBox<Congregation>(Congregation.key);
+
+  final visitBox = await Hive.openBox<Visit>(Visit.key);
+
+  final groupBox = await Hive.openBox<Group>(Group.key);
+
+  final appSettings = await Hive.openBox<AppSettings>(AppSettings.key);
+
+  GetIt.I.registerLazySingleton<Box<AppSettings>>(() => appSettings);
+
+  GetIt.I.registerLazySingleton<Repository>(() => Repository(visitBox: visitBox, groupBox: groupBox, congregationBox: congregationBox));
+
   GetIt.I.registerLazySingleton<FlagsmithClient>(() => FlagsmithClient(apiKey: flagsmithClientApiKeyDev));
 
   final featureToggles = await inject<FlagsmithClient>().getFeatureFlags();
@@ -88,15 +115,15 @@ setupInjection() async {
 
   GetIt.I.registerLazySingleton<PackageInfo>(() => packageInfo);
 
-  GetIt.I.registerLazySingleton<SQFliteService>(() => SQFliteService());
-
   GetIt.I.registerLazySingleton<FirebaseRemoteConfig>(() => FirebaseRemoteConfig.instance);
 
-  GetIt.I.registerLazySingleton<CongregationsCubit>(() => CongregationsCubit(inject<SQFliteService>()));
+  GetIt.I.registerLazySingleton<CongregationsCubit>(() => CongregationsCubit(inject<Repository>()));
 
-  GetIt.I.registerLazySingleton<ListCongregationsCubit>(() => ListCongregationsCubit(inject<SQFliteService>()));
+  GetIt.I.registerLazySingleton<ListCongregationsCubit>(() => ListCongregationsCubit());
 
-  GetIt.I.registerLazySingleton<VisitsCubit>(() => VisitsCubit(inject<SQFliteService>()));
+  GetIt.I.registerLazySingleton<VisitsCubit>(() => VisitsCubit(inject<Repository>()));
+
+  GetIt.I.registerLazySingleton<CreateVisitCubit>(() => CreateVisitCubit(inject<Repository>()));
 
   GetIt.I.registerLazySingleton<ForceUpdateService>(() => ForceUpdateService(
         featureToggles: inject<FeatureToggles>(),

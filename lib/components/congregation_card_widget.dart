@@ -1,5 +1,5 @@
 import 'package:circuit_superintendent_tool/core/app_spacing.dart';
-import 'package:circuit_superintendent_tool/core/localizations.dart';
+import 'package:circuit_superintendent_tool/core/core.dart';
 import 'package:circuit_superintendent_tool/core/theme/app_colors.dart';
 import 'package:circuit_superintendent_tool/core/theme/app_text_theme.dart';
 import 'package:circuit_superintendent_tool/core/theme/app_theme.dart';
@@ -24,7 +24,7 @@ class _CongregationCardWidgetState extends State<CongregationCardWidget> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<AppCardTheme>()!;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.x24, vertical: AppSpacing.x12),
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.x8, vertical: AppSpacing.x12),
       child: GestureDetector(
         onTap: displayDelete ? null : widget.onEdit,
         child: Container(

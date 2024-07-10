@@ -20,10 +20,10 @@ VisitDTO _$VisitDTOFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$VisitDTO {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   VisitDTO? get previousVisit => throw _privateConstructorUsedError;
   @JsonKey(name: 'congregation_id')
-  int get congregationId => throw _privateConstructorUsedError;
+  String get congregationId => throw _privateConstructorUsedError;
   @JsonKey(name: 'visit_date')
   String get visitDate => throw _privateConstructorUsedError;
   @JsonKey(name: 'mid_week_assistance')
@@ -48,9 +48,9 @@ abstract class $VisitDTOCopyWith<$Res> {
       _$VisitDTOCopyWithImpl<$Res, VisitDTO>;
   @useResult
   $Res call(
-      {int id,
+      {String id,
       VisitDTO? previousVisit,
-      @JsonKey(name: 'congregation_id') int congregationId,
+      @JsonKey(name: 'congregation_id') String congregationId,
       @JsonKey(name: 'visit_date') String visitDate,
       @JsonKey(name: 'mid_week_assistance') int midWeekAssistance,
       @JsonKey(name: 'weekend_assistance') int weekendAssistance,
@@ -88,7 +88,7 @@ class _$VisitDTOCopyWithImpl<$Res, $Val extends VisitDTO>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       previousVisit: freezed == previousVisit
           ? _value.previousVisit
           : previousVisit // ignore: cast_nullable_to_non_nullable
@@ -96,7 +96,7 @@ class _$VisitDTOCopyWithImpl<$Res, $Val extends VisitDTO>
       congregationId: null == congregationId
           ? _value.congregationId
           : congregationId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       visitDate: null == visitDate
           ? _value.visitDate
           : visitDate // ignore: cast_nullable_to_non_nullable
@@ -146,9 +146,9 @@ abstract class _$$VisitDTOImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {String id,
       VisitDTO? previousVisit,
-      @JsonKey(name: 'congregation_id') int congregationId,
+      @JsonKey(name: 'congregation_id') String congregationId,
       @JsonKey(name: 'visit_date') String visitDate,
       @JsonKey(name: 'mid_week_assistance') int midWeekAssistance,
       @JsonKey(name: 'weekend_assistance') int weekendAssistance,
@@ -185,7 +185,7 @@ class __$$VisitDTOImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       previousVisit: freezed == previousVisit
           ? _value.previousVisit
           : previousVisit // ignore: cast_nullable_to_non_nullable
@@ -193,7 +193,7 @@ class __$$VisitDTOImplCopyWithImpl<$Res>
       congregationId: null == congregationId
           ? _value.congregationId
           : congregationId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       visitDate: null == visitDate
           ? _value.visitDate
           : visitDate // ignore: cast_nullable_to_non_nullable
@@ -226,9 +226,9 @@ class __$$VisitDTOImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$VisitDTOImpl extends _VisitDTO {
   const _$VisitDTOImpl(
-      {this.id = 0,
+      {required this.id,
       this.previousVisit,
-      @JsonKey(name: 'congregation_id') this.congregationId = 0,
+      @JsonKey(name: 'congregation_id') this.congregationId = '',
       @JsonKey(name: 'visit_date') this.visitDate = '',
       @JsonKey(name: 'mid_week_assistance') this.midWeekAssistance = 0,
       @JsonKey(name: 'weekend_assistance') this.weekendAssistance = 0,
@@ -243,13 +243,12 @@ class _$VisitDTOImpl extends _VisitDTO {
       _$$VisitDTOImplFromJson(json);
 
   @override
-  @JsonKey()
-  final int id;
+  final String id;
   @override
   final VisitDTO? previousVisit;
   @override
   @JsonKey(name: 'congregation_id')
-  final int congregationId;
+  final String congregationId;
   @override
   @JsonKey(name: 'visit_date')
   final String visitDate;
@@ -333,9 +332,9 @@ class _$VisitDTOImpl extends _VisitDTO {
 
 abstract class _VisitDTO extends VisitDTO {
   const factory _VisitDTO(
-      {final int id,
+      {required final String id,
       final VisitDTO? previousVisit,
-      @JsonKey(name: 'congregation_id') final int congregationId,
+      @JsonKey(name: 'congregation_id') final String congregationId,
       @JsonKey(name: 'visit_date') final String visitDate,
       @JsonKey(name: 'mid_week_assistance') final int midWeekAssistance,
       @JsonKey(name: 'weekend_assistance') final int weekendAssistance,
@@ -349,12 +348,12 @@ abstract class _VisitDTO extends VisitDTO {
       _$VisitDTOImpl.fromJson;
 
   @override
-  int get id;
+  String get id;
   @override
   VisitDTO? get previousVisit;
   @override
   @JsonKey(name: 'congregation_id')
-  int get congregationId;
+  String get congregationId;
   @override
   @JsonKey(name: 'visit_date')
   String get visitDate;
